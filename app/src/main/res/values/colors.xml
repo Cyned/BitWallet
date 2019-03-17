@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="mainBackground">#292C35</color>
+    <color name="mainAuthHint">#8EC05F</color>
+    <color name="authComments">#545559</color>
     <color name="authHint">#8EC05F</color>
+    <color name="authInput">#1E1F23</color>
 </resources>
