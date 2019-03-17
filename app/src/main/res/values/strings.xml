@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BitWallet</string>
+	<string name="app_name">BitWallet application</string>
+	<string name="author">Denis</string>
 </resources>
