@@ -1,7 +1,7 @@
 package com.example.bitwallet
 
+import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -9,13 +9,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_login.*
 
-class Login : AppCompatActivity() {
+class Login : Activity() {
 
-//    private var mAuth: FirebaseAuth? = null
+    val mAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,20 +26,24 @@ class Login : AppCompatActivity() {
             view -> login()
         })
 
-        val registerBtn = findViewById<View>(R.id.register) as TextView
+        val registerBtn = findViewById<View>(R.id.registerBtn) as TextView
         registerBtn.setOnClickListener(View.OnClickListener {
-                view -> register()
+            view -> register()
+        })
+
+        val mailBtn = findViewById<View>(R.id.mailBtn) as Button
+        val mailEditText = findViewById<View>(R.id.mailInput) as EditText
+        mailBtn.setOnClickListener(View.OnClickListener {
+            view -> editTextClean(mailEditText)
         })
     }
 
     private fun login () {
         val emailTxt = findViewById<View>(R.id.mailInput) as EditText
         val passwordTxt = findViewById<View>(R.id.passInput) as EditText
-        var email = emailTxt.text.toString()
-        var password = passwordTxt.text.toString()
+        val email = emailTxt.text.toString()
+        val password = passwordTxt.text.toString()
 
-        FirebaseApp.initializeApp(this)
-        val mAuth = FirebaseAuth.getInstance()
 
         if (!email.isEmpty() && !password.isEmpty()) {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
@@ -56,7 +60,11 @@ class Login : AppCompatActivity() {
     }
 
     private fun register() {
-        startActivity(Intent(this, Register ::class.java))
+        startActivity(Intent(this, Register::class.java))
+    }
+
+    private fun editTextClean(editText: EditText){
+        editText.text.clear()
     }
 
 }

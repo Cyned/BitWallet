@@ -14,18 +14,18 @@
 			app:layout_constraintTop_toTopOf="parent"
 			android:text="@string/app_name"
 			android:background="@color/colorPrimary"
-			android:layout_width="411dp"
 			android:layout_height="wrap_content"
 			android:id="@+id/AppName"
 			android:textSize="30sp"
 			android:textStyle="bold"
 			android:textColor="@color/colorAccent"
-			android:paddingBottom="8dp"
-			android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-			android:paddingLeft="30dp"/>
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:layout_width="0dp"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp"/>
 	<TextView
-			android:text="Register"
+			android:text="@string/RegisterUnder"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:id="@+id/register"
@@ -40,7 +40,7 @@
 	<TextView
 			app:layout_constraintTop_toBottomOf="@+id/AppName"
 			app:layout_constraintEnd_toStartOf="@+id/register"
-			android:text="Login"
+			android:text="@string/LoginUnder"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textColor="@color/mainAuthHint"
