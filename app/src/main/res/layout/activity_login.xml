@@ -39,8 +39,8 @@
 					android:inputType="textPersonName"
 					android:text="test@mail.com"
 					android:ems="10"
-					android:id="@+id/mailInput" android:layout_weight="0.7" android:layout_width="0dp"
-					android:textColor="@color/colorAccent"/>
+					android:id="@+id/mailInput" android:layout_weight="0.7"
+					android:textColor="@color/colorAccent" android:layout_width="20dp"/>
 			<Button
 					android:text="x "
 					android:layout_width="0dp"
@@ -62,7 +62,8 @@
 					android:inputType="textPersonName"
 					android:text="****"
 					android:ems="10"
-					android:id="@+id/passInput" android:layout_weight="0.7" android:textColor="@color/colorAccent"/>
+					android:id="@+id/passInput" android:layout_weight="0.7" android:textColor="@color/colorAccent"
+					android:layout_width="20dp"/>
 			<Button
 					android:text=">"
 					android:layout_width="0dp"
@@ -78,7 +79,8 @@
 			android:layout_marginEnd="8dp"
 			app:layout_constraintStart_toStartOf="parent"
 			android:paddingLeft="8dp" android:paddingRight="8dp"
-			android:layout_margin="8dp">
+			android:layout_margin="8dp"
+			android:layout_marginRight="8dp">
 		<TextView
 				android:text="No account yet?"
 				android:layout_width="0dp"

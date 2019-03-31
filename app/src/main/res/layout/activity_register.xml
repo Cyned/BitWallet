@@ -37,7 +37,8 @@
 					android:inputType="textPersonName"
 					android:text="test@mail.com"
 					android:ems="10"
-					android:id="@+id/mailInput" android:layout_weight="0.7" android:textColor="@color/colorAccent"/>
+					android:id="@+id/mailInput" android:layout_weight="0.7" android:textColor="@color/colorAccent"
+					android:layout_width="20dp"/>
 			<Button
 					android:text="x "
 					android:layout_width="0dp"
@@ -55,7 +56,7 @@
 					android:layout_width="0dp" android:textColor="@color/authComments"
 					android:layout_marginRight="8dp" android:gravity="center|end"/>
 			<EditText
-					android:layout_width="0dp"
+					android:layout_width="20dp"
 					android:layout_height="match_parent"
 					android:inputType="textPersonName"
 					android:text="****"

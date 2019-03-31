@@ -9,13 +9,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_main.*
 
 class Login : AppCompatActivity() {
 
-    val mAuth = FirebaseAuth.getInstance()
+//    private var mAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +38,11 @@ class Login : AppCompatActivity() {
         var email = emailTxt.text.toString()
         var password = passwordTxt.text.toString()
 
+        FirebaseApp.initializeApp(this)
+        val mAuth = FirebaseAuth.getInstance()
+
         if (!email.isEmpty() && !password.isEmpty()) {
-            this.mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
                 if (task.isSuccessful){
                     startActivity(Intent(this, Timeline::class.java))
                     Toast.makeText(this, "Successfully Logged in:", Toast.LENGTH_LONG).show()
@@ -48,7 +51,7 @@ class Login : AppCompatActivity() {
                 }
             })
         }else {
-            Toast.makeText(this, "Please fill up the Creddentials :|", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Please fill up the Credentials :(", Toast.LENGTH_LONG).show()
         }
     }
 
