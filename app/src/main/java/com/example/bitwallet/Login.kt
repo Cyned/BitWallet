@@ -49,7 +49,7 @@ class Login : Activity() {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
                 if (task.isSuccessful){
                     startActivity(Intent(this, Timeline::class.java))
-                    Toast.makeText(this, "Successfully Logged in:", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
                 } else {
                     Toast.makeText(this, "Error Logging in :(", Toast.LENGTH_LONG).show()
                 }
@@ -59,8 +59,12 @@ class Login : Activity() {
         }
     }
 
+//    private fun register() {
+//        startActivity(Intent(this, Register::class.java))
+//    }
+
     private fun register() {
-        startActivity(Intent(this, Register::class.java))
+        startActivity(Intent(this, com.example.bitwallet.Register::class.java))
     }
 
     private fun editTextClean(editText: EditText){
