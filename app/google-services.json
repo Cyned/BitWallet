@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "406734164654",
+    "firebase_url": "https://bitwallet-e6eb5.firebaseio.com",
+    "project_id": "bitwallet-e6eb5",
+    "storage_bucket": "bitwallet-e6eb5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406734164654:android:f033c17a908530ae",
+        "android_client_info": {
+          "package_name": "com.example.bitwallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406734164654-dp3ik96k21anrebg5880c4oe1uufi9ha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bitwallet",
+            "certificate_hash": "45ac6482b6b3d2b824c0b398d1de86358f4e7af8"
+          }
+        },
+        {
+          "client_id": "406734164654-035clmb3890bsdt7ukvdkaahp04g1652.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMTA7hzX9fl64j-1rONWEpwpKUelzvoMs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406734164654-035clmb3890bsdt7ukvdkaahp04g1652.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

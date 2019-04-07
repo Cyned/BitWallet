@@ -11,45 +11,39 @@
 >
 
 	<TextView
-			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
 			android:text="@string/app_name"
-			android:layout_width="0dp"
+			android:background="@color/colorPrimary"
 			android:layout_height="wrap_content"
 			android:id="@+id/AppName"
-			android:layout_marginTop="24dp"
-			android:layout_marginLeft="24dp"
-			android:layout_marginStart="8dp"
-			android:layout_marginEnd="8dp"
-			android:layout_marginRight="24dp"
 			android:textSize="30sp"
 			android:textStyle="bold"
 			android:textColor="@color/colorAccent"
-	/>
-	<TextView
-			app:layout_constraintTop_toBottomOf="@+id/AppName"
+			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			android:text="Register"
+			android:layout_width="0dp"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp"/>
+	<TextView
+			android:text="@string/RegisterUnder"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:id="@+id/textView2"
-			android:layout_marginEnd="8dp"
-			android:layout_marginRight="8dp"
-			android:textColor="@color/authHint"
+			android:id="@+id/register"
+			android:textColor="@color/mainAuthHint"
 			android:paddingBottom="8dp"
 			android:paddingLeft="8dp"
 			android:paddingRight="8dp"
 			android:paddingTop="8dp"
 			android:layout_marginTop="8dp"
-	/>
+			app:layout_constraintTop_toBottomOf="@+id/AppName" android:layout_marginEnd="8dp"
+			app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"/>
 	<TextView
 			app:layout_constraintTop_toBottomOf="@+id/AppName"
-			app:layout_constraintEnd_toStartOf="@+id/textView2"
-			android:text="Login"
+			app:layout_constraintEnd_toStartOf="@+id/register"
+			android:text="@string/LoginUnder"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:textColor="@color/authHint"
+			android:textColor="@color/mainAuthHint"
 			android:paddingBottom="8dp"
 			android:paddingLeft="8dp"
 			android:paddingRight="8dp"
@@ -57,6 +51,6 @@
 			android:layout_marginTop="8dp"
 			android:layout_marginEnd="8dp"
 			android:layout_marginRight="8dp"
-	/>
+			android:id="@+id/login"/>
 
 </android.support.constraint.ConstraintLayout>
