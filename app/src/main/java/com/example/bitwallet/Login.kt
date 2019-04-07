@@ -11,7 +11,6 @@ import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_login.*
 
 class Login : Activity() {
 
@@ -48,7 +47,7 @@ class Login : Activity() {
         if (!email.isEmpty() && !password.isEmpty()) {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
                 if (task.isSuccessful){
-                    startActivity(Intent(this, Timeline::class.java))
+                    startActivity(Intent(this, Wallet::class.java))
                     Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
                 } else {
                     Toast.makeText(this, "Error Logging in :(", Toast.LENGTH_LONG).show()

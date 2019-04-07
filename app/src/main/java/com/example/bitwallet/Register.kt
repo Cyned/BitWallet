@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 
 
 class Register : Activity() {
@@ -63,7 +62,7 @@ class Register : Activity() {
 //                            val uid = user!!.uid
 //                            mDatabase.child(uid).child("Email").setValue(email)
 //                            mDatabase.child(uid).child("Password").setValue(password)
-                            startActivity(Intent(this, Timeline::class.java))
+                            startActivity(Intent(this, Wallet::class.java))
                             Toast.makeText(this, "Successfully registered :)", Toast.LENGTH_LONG).show()
                         } else
                             System.err.println("createUserWithEmail:failure" + task.exception)

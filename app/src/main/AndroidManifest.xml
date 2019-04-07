@@ -9,6 +9,16 @@
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
+		<activity android:name=".Transactions">
+		</activity>
+		<activity android:name=".Send">
+		</activity>
+		<activity android:name=".Settings">
+		</activity>
+		<activity android:name=".Success">
+		</activity>
+		<activity android:name=".Receive">
+		</activity>
 		<activity android:name=".MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -20,7 +30,7 @@
 		</activity>
 		<activity android:name=".Register">
 		</activity>
-		<activity android:name=".Timeline">
+		<activity android:name=".Wallet">
 		</activity>
 	</application>
 

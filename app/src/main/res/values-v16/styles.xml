@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="FontBase">
+		<item name="android:fontFamily">SF Pro Text</item>
+	</style>
+
+	<style name="SilentHill" parent="@style/FontBase">
+		<item name="android:textColor">#545559</item>
+	</style>
+
+
+	<style name="CommonUse" parent="@style/FontBase">
+		<item name="android:textColor">#ffffff</item>
+	</style>
+
+
+	<style name="Warnings" parent="@style/FontBase">
+		<item name="android:textColor">#d37377</item>
+	</style>
+
+
+</resources>
