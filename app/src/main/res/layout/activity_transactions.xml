@@ -94,7 +94,7 @@
 				<TextView
 						android:text="pending..."
 						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:id="@+id/24" android:layout_weight="1"
+						android:layout_height="wrap_content" android:id="@+id/text24" android:layout_weight="1"
 						style="@style/SilentHill" android:textSize="14sp"/>
 			</LinearLayout>
 			<LinearLayout
@@ -104,12 +104,12 @@
 				<TextView
 						android:text="0.100 BTC ^"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/25" android:gravity="end"
+						android:layout_height="wrap_content" android:id="@+id/text25" android:gravity="end"
 						android:textSize="16sp" android:textColor="#198216"/>
 				<TextView
 						android:text="$292.23"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/26" android:gravity="end"
+						android:layout_height="wrap_content" android:id="@+id/text26" android:gravity="end"
 						android:textSize="14sp" style="@style/SilentHill"/>
 			</LinearLayout>
 		</LinearLayout>
@@ -124,12 +124,12 @@
 				<TextView
 						android:text="3 hours ago"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/27" style="@style/CommonUse"
+						android:layout_height="wrap_content" android:id="@+id/text27" style="@style/CommonUse"
 						android:textSize="16sp"/>
 				<TextView
 						android:text="via sfhibj3q423njJKNF:E..."
 						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:id="@+id/28" android:layout_weight="1"
+						android:layout_height="wrap_content" android:id="@+id/text28" android:layout_weight="1"
 						style="@style/SilentHill" android:textSize="14sp"/>
 			</LinearLayout>
 			<LinearLayout
@@ -139,12 +139,12 @@
 				<TextView
 						android:text="0.100 BTC ^"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/textV29" android:gravity="end"
+						android:layout_height="wrap_content" android:id="@+id/text29" android:gravity="end"
 						android:textSize="16sp" android:textColor="#198216"/>
 				<TextView
 						android:text="$292.23"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/30" android:gravity="end"
+						android:layout_height="wrap_content" android:id="@+id/text30" android:gravity="end"
 						android:textSize="14sp" style="@style/SilentHill"/>
 			</LinearLayout>
 		</LinearLayout>
@@ -159,12 +159,12 @@
 				<TextView
 						android:text="1 month ago"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/31" style="@style/CommonUse"
+						android:layout_height="wrap_content" android:id="@+id/text31" style="@style/CommonUse"
 						android:textSize="16sp"/>
 				<TextView
 						android:text="via jsdjgjsdgj64774HJFG..."
 						android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:id="@+id/32" android:layout_weight="1"
+						android:layout_height="wrap_content" android:id="@+id/text32" android:layout_weight="1"
 						style="@style/SilentHill" android:textSize="14sp"/>
 			</LinearLayout>
 			<LinearLayout
@@ -174,12 +174,12 @@
 				<TextView
 						android:text="0.100 BTC ^"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/33" android:gravity="end"
+						android:layout_height="wrap_content" android:id="@+id/text33" android:gravity="end"
 						android:textSize="16sp" android:textColor="#198216"/>
 				<TextView
 						android:text="$292.23"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:id="@+id/34" android:gravity="end"
+						android:layout_height="wrap_content" android:id="@+id/text34" android:gravity="end"
 						android:textSize="14sp" style="@style/SilentHill"/>
 			</LinearLayout>
 		</LinearLayout>
