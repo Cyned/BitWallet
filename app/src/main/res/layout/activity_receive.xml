@@ -6,70 +6,83 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		tools:context=".Receive" android:background="@color/mainBackground">
-	<TextView
-			android:text="@string/receiveTitle"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:id="@+id/textView"
-			app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-			android:layout_marginEnd="8dp"
+	<android.support.constraint.ConstraintLayout
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
 			app:layout_constraintStart_toStartOf="parent"
-			android:layout_marginStart="8dp" style="@style/CommonUse" android:textSize="17sp"
-			android:layout_margin="16dp"/>
+			android:layout_marginStart="8dp" android:id="@+id/navbar"
+			app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp">
+
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_height="0dp"
+				app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+				android:layout_marginStart="8dp"
+				android:id="@+id/home" android:layout_weight="0.4"
+				app:layout_constraintBottom_toBottomOf="parent" android:layout_width="wrap_content">
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" app:srcCompat="?attr/homeAsUpIndicator"
+					android:id="@+id/homePhoto" android:layout_weight="0.2"/>
+			<Button
+					android:text="@string/WalletBtn"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent" tools:layout_editor_absoluteY="84dp"
+					tools:layout_editor_absoluteX="16dp" android:id="@+id/homeText"
+					android:background="@color/mainBackground"
+					style="@style/CommonUse" android:layout_weight="0.8" android:gravity="start|center_vertical"/>
+		</LinearLayout>
+		<TextView
+				android:text="@string/receiveTitle"
+				android:layout_height="wrap_content"
+				android:id="@+id/title" style="@style/CommonUse"
+				android:textSize="17sp"
+				app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+				app:layout_constraintStart_toStartOf="@+id/home"
+				app:layout_constraintTop_toTopOf="parent" android:layout_weight="0.6"
+				app:layout_constraintBottom_toBottomOf="parent"
+				android:layout_width="wrap_content" android:layout_marginEnd="8dp"/>
+	</android.support.constraint.ConstraintLayout>
 	<ImageView
 			android:layout_width="0dp"
 			android:layout_height="223dp" app:srcCompat="@android:drawable/ic_menu_recent_history"
-			android:id="@+id/imageView"
-			app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintEnd_toEndOf="parent"
+			android:id="@+id/qrcode"
+			app:layout_constraintEnd_toEndOf="parent"
 			android:layout_marginEnd="8dp"
 			app:layout_constraintStart_toStartOf="parent"
 			android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.0"
-			android:layout_marginTop="116dp" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+			android:layout_marginLeft="16dp" android:layout_marginRight="16dp" tools:layout_editor_absoluteY="155dp"/>
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="0dp"
-			android:layout_height="39dp"
+			android:layout_height="wrap_content"
 			android:layout_marginTop="8dp"
-			app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/qrcode" app:layout_constraintEnd_toEndOf="parent"
 			android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
 			app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
 			android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-			app:layout_constraintBottom_toBottomOf="parent" android:paddingLeft="16dp" android:paddingRight="16dp"
-			app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.248">
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.248"
+			android:id="@+id/user">
 		<TextView
 				android:text="mtkdk245k4356k3kl3...234jn2n35"
-				android:layout_width="162dp"
-				android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_marginTop="8dp"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent" android:id="@+id/userCode"
 				app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-				android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+				android:layout_marginStart="8dp"
 				app:layout_constraintBottom_toBottomOf="parent" style="@style/SilentHill" android:textSize="16sp"
-				android:layout_weight="0.7"/>
+				android:layout_weight="0.5" android:layout_gravity="center_vertical"
+				android:gravity="center_horizontal|center_vertical"/>
 		<TextView
 				android:text="@string/copy"
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:id="@+id/textView3"
+				android:layout_height="match_parent" android:id="@+id/copyBtn"
 				app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-				android:layout_marginRight="8dp" android:layout_marginTop="8dp"
-				app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-				app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@+id/textView2"
-				android:layout_marginLeft="8dp" android:layout_marginStart="8dp" style="@style/CommonUse"
-				android:textSize="16sp" android:layout_weight="0.3"/>
-	</LinearLayout>
-	<LinearLayout
-			android:orientation="horizontal"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content" android:layout_marginTop="16dp"
-			app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-			android:layout_marginLeft="16dp" android:layout_marginStart="8dp"
-	>
-		<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" app:srcCompat="?attr/homeAsUpIndicator"
-				android:id="@+id/imageView7" android:layout_weight="0.2"/>
-		<Button
-				android:text="@string/WalletBtn"
-				android:layout_width="wrap_content"
-				android:layout_height="25dp" tools:layout_editor_absoluteY="84dp"
-				tools:layout_editor_absoluteX="16dp" android:id="@+id/home" android:background="@color/mainBackground"
-				style="@style/CommonUse" android:layout_weight="0.8" android:gravity="start"/>
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@+id/userCode"
+				android:layout_marginStart="8dp" style="@style/CommonUse"
+				android:textSize="16sp" android:layout_weight="0.5"
+				android:layout_gravity="start|center_vertical" android:gravity="start|center_vertical"/>
 	</LinearLayout>
 </android.support.constraint.ConstraintLayout>

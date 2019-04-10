@@ -14,7 +14,6 @@ class Success : AppCompatActivity() {
 
 
         val homeBtn = findViewById<View>(R.id.home) as Button
-
         homeBtn.setOnClickListener(View.OnClickListener {
                 view -> goHome ()
         })

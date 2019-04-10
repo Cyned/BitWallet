@@ -2,16 +2,14 @@ package com.example.bitwallet
 
 import android.app.Activity
 import android.content.Intent
-import android.icu.text.IDNA
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
-import android.text.Layout
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_wallet.*
+
 
 class Wallet : Activity() {
 
@@ -62,7 +60,7 @@ class Wallet : Activity() {
 
     private fun signOut(){
         mAuth.signOut()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, Login::class.java))
         Toast.makeText(this, "Logged out :(", Toast.LENGTH_LONG).show()
     }
 
