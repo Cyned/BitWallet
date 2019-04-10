@@ -2,8 +2,10 @@ package com.example.bitwallet
 
 import android.app.Activity
 import android.content.Intent
+import android.icu.text.IDNA
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
+import android.text.Layout
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -38,21 +40,22 @@ class Wallet : Activity() {
                 view -> signOut()
         })
 
-        val receiveLayout = findViewById<View>(R.id.Receive) as ConstraintLayout
-        val sendLayout = findViewById<View>(R.id.Send) as ConstraintLayout
-        val transLayout = findViewById<View>(R.id.Transactions) as ConstraintLayout
-        val infoLayout = findViewById<View>(R.id.Info) as ConstraintLayout
+        val receiveLayout = findViewById<ConstraintLayout>(R.id.receive)
+        val sendLayout = findViewById<ConstraintLayout>(R.id.send)
+        val transLayout = findViewById<ConstraintLayout>(R.id.transactions)
+        val infoLayout = findViewById<ConstraintLayout>(R.id.info)
+
         receiveLayout.setOnClickListener(View.OnClickListener {
-                view -> goReceive ()
+                view -> goReceive()
         })
         sendLayout.setOnClickListener(View.OnClickListener {
-                view -> goSend ()
+                view -> goSend()
         })
         transLayout.setOnClickListener(View.OnClickListener {
-                view -> goTransactions ()
+                view -> goTransactions()
         })
         infoLayout.setOnClickListener(View.OnClickListener {
-                view -> goInfo ()
+                view -> goInfo()
         })
 
     }
@@ -76,7 +79,7 @@ class Wallet : Activity() {
     }
 
     private fun goInfo() {
-        startActivity(Intent(this, Info::class.java))
+        startActivity(Intent(this, Settings::class.java))
     }
 
 }
