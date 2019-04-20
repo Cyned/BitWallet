@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 
 class Settings : AppCompatActivity() {
 
@@ -12,7 +13,7 @@ class Settings : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val homeBtn = findViewById<View>(R.id.home) as Button
+        val homeBtn = findViewById<View>(R.id.home) as ImageView
         homeBtn.setOnClickListener(View.OnClickListener {
                 view -> goHome ()
         })

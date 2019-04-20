@@ -33,10 +33,10 @@ class Wallet : Activity() {
 
         })
 
-        val signOut = findViewById<View>(R.id.signOut) as Button
-        signOut.setOnClickListener(View.OnClickListener {
-                view -> signOut()
-        })
+//        val signOut = findViewById<View>(R.id.signOut) as Button
+//        signOut.setOnClickListener(View.OnClickListener {
+//                view -> signOut()
+//        })
 
         val receiveLayout = findViewById<ConstraintLayout>(R.id.receive)
         val sendLayout = findViewById<ConstraintLayout>(R.id.send)

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 
 class Send : AppCompatActivity() {
 
@@ -13,7 +14,7 @@ class Send : AppCompatActivity() {
         setContentView(R.layout.activity_send)
 
 
-        val homeBtn = findViewById<View>(R.id.home) as Button
+        val homeBtn = findViewById<View>(R.id.home) as ImageView
         homeBtn.setOnClickListener(View.OnClickListener {
                 view -> goHome ()
         })
