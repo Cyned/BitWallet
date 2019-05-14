@@ -6,5 +6,6 @@ data class LoginModel (
     @SerializedName("username") @Expose val username: String,
     @SerializedName("password") @Expose val password: String,
     @SerializedName("token") @Expose val token: String,
-    @SerializedName("status") @Expose val status: String
+    @SerializedName("status") @Expose val status: String,
+    @SerializedName("message") @Expose val message: String
 )

@@ -2,31 +2,6 @@
 	<string name="app_name">BitWallet application</string>
 	<string name="author">Denis</string>
 
-
-	<!-- Login and Register Strings -->
-	<string name="Register">Register</string>
-	<string name="Login">Login</string>
-	<string name="signOut">sign out</string>
-	<string name="RegisterUnder">
-		<u>Register</u>
-	</string>
-	<string name="LoginUnder">
-		<u>Login</u>
-	</string>
-	<string name="register">
-		<u>register</u>
-	</string>
-	<string name="login">
-		<u>login</u>
-	</string>
-
-
-	<string name="mailUpper">MAIL:</string>
-	<string name="passUpper">PASS:</string>
-	<string name="haveAcc">Already have an account?</string>
-	<string name="noAcc">No account yet?</string>
-
-
 	<string name="WalletBtn">Wallet</string>
 
 	<!-- Wallet Strings -->

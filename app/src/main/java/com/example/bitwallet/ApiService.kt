@@ -12,7 +12,14 @@ interface ApiService {
 
     @POST("auth/login")
     @FormUrlEncoded
-    fun NewUser(
+    fun login(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ) : Call<LoginModel>
+
+    @POST("auth/register")
+    @FormUrlEncoded
+    fun register(
         @Field("username") username: String,
         @Field("password") password: String
     ) : Call<LoginModel>
