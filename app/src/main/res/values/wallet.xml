@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Wallet Strings -->
+	<string name="businessWallet">Business wallet</string>
+	<string name="bitcoin">BTC</string>
+
+	<string name="receiveBitcoin">Receive bitcoins</string>
+	<string name="sendBitcoin">Send bitcoins</string>
+	<string name="transactionsList">Transactions list</string>
+	<string name="info">Wallet setting</string>
+
+</resources>

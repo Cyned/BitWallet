@@ -16,20 +16,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import LoginModel
 import android.content.SharedPreferences
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_receive.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
-import java.lang.Exception
 
 
 class Login : Activity(){
 
     val mAuth = FirebaseAuth.getInstance()
-        private var PRIVATE_MODE = 0
-        private val PREF_NAME = "token"
-        private lateinit var sharedPref: SharedPreferences
+    private var PRIVATE_MODE = 0
+    private val PREF_NAME = "token"
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,7 +118,8 @@ class Login : Activity(){
         val password = passwordTxt.text.toString()
 
         if (!email.isEmpty() && !password.isEmpty()) {
-            firebaseLogin(email = email, password = password)
+//            firebaseLogin(email = email, password = password)
+            bitwalletLogin(username=email, password = password)
         }else {
             Toast.makeText(this, "Please fill up the Credentials :(", Toast.LENGTH_LONG).show()
         }

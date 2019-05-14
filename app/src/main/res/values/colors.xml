@@ -8,4 +8,6 @@
     <color name="authComments">#545559</color>
     <color name="authHint">#8EC05F</color>
     <color name="authInput">#1E1F23</color>
+    <color name="deltaUp">#198216</color>
+    <color name="deltaDown">#d80012</color>
 </resources>

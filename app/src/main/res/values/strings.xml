@@ -4,16 +4,6 @@
 
 	<string name="WalletBtn">Wallet</string>
 
-	<!-- Wallet Strings -->
-	<string name="businessWallet">Business wallet</string>
-	<string name="bitcoin">BTC</string>
-
-	<string name="receiveBitcoin">Receive bitcoins</string>
-	<string name="sendBitcoin">Send bitcoins</string>
-	<string name="transactionsList">Transactions list</string>
-	<string name="info">Wallet setting</string>
-
-
 	<!--  Receive Strings -->
 	<string name="receiveTitle">Receive</string>
 	<string name="copy">COPY</string>
