@@ -137,8 +137,8 @@
 								app:layout_constraintBottom_toBottomOf="parent"
 								app:layout_constraintEnd_toEndOf="parent"/>
 						<ImageView
-								android:src="@android:drawable/arrow_up_float"
-								android:layout_width="20dp"
+								android:src="@android:drawable/arrow_down_float"
+								android:layout_width="15dp"
 								android:layout_height="20dp"
 								android:id="@+id/deltaDown"
 								android:layout_weight="0.5"

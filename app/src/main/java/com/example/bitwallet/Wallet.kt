@@ -16,10 +16,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import BalanceModel
 import ExchangeModel
-import android.annotation.SuppressLint
-import android.support.v4.content.ContextCompat.startActivity
+import android.graphics.Color
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_wallet.*
+import org.w3c.dom.Text
 
 
 class Wallet : Activity() {
@@ -27,6 +27,7 @@ class Wallet : Activity() {
     private var PRIVATE_MODE = 0
     private val PREF_NAME = "token"
     private lateinit var sharedPref: SharedPreferences
+    private var dollarAmount: Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +37,15 @@ class Wallet : Activity() {
         val token: String = sharedPref.getString(PREF_NAME, "").toString()
         // Set wallet information
         val amountView = findViewById<View>(R.id.amount) as TextView
-        val decimalView = findViewById<View>(R.id.currency) as TextView
+        val decimalView = findViewById<View>(R.id.decimal) as TextView
         setBalance(token=token, amountView = amountView, decimalView = decimalView)
 
         val marketPriceView = findViewById<View>(R.id.marketPrice) as TextView
         val deltaView = findViewById<View>(R.id.delta) as TextView
         val deltaUp = findViewById<ImageView>(R.id.deltaUp)
         val deltaDown = findViewById<ImageView>(R.id.deltaDown)
-        setExchange(token=token, marketPriceView= marketPriceView, deltaView = deltaView, deltaDown = deltaDown, deltaUp = deltaUp)
-
+        val usdView = findViewById<View>(R.id.usd) as TextView
+        setExchange(token=token, marketPriceView=marketPriceView, deltaView=deltaView, deltaDown=deltaDown, deltaUp=deltaUp, usdView=usdView)
 
         // Set button listeners
         val receiveLayout = findViewById<ConstraintLayout>(R.id.receive)
@@ -84,9 +85,9 @@ class Wallet : Activity() {
             override fun onResponse(call: Call<BalanceModel>?, response: Response<BalanceModel>?) {
                 if(response?.body() != null) {
                     if(response.isSuccessful and (response.body()!!.status == "success")) {
-                        val balance: String = response.body()!!.balance.toString()
+                        val balance: String = response.body()!!.balance
                         Log.d("Status", "Receive balance: $balance")
-
+                        dollarAmount = balance.toFloat()
                         amountView.text = balance.slice(IntRange(start=0, endInclusive = 4))
                         decimalView.text = balance.slice(IntRange(start=4, endInclusive = 6))
 
@@ -103,7 +104,7 @@ class Wallet : Activity() {
         })
     }
 
-    private fun setExchange(token: String, marketPriceView: TextView, deltaView: TextView, deltaUp: ImageView, deltaDown: ImageView){
+    private fun setExchange(token: String, marketPriceView: TextView, deltaView: TextView, deltaUp: ImageView, deltaDown: ImageView, usdView: TextView){
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(URL)
@@ -119,19 +120,23 @@ class Wallet : Activity() {
             override fun onResponse(call: Call<ExchangeModel>?, response: Response<ExchangeModel>?) {
                 if(response?.body() != null) {
                     if(response.isSuccessful and (response.body()!!.status == "success")) {
-                        val price: String = response.body()!!.price.toString()
-                        val change24h : Float = response.body()!!.change24h.toFloat()
+                        val price: String = response.body()!!.price
+                        var change24h : Float = response.body()!!.change24h.toFloat()
                         Log.d("Status", "Receive price: $price")
 
-                        marketPriceView.text = "1 BTC = $$price"
-                        deltaView.text = (change24h * 100).toString() + "%"
                         if(change24h>=0) {
-//                            deltaView.textColor = "@color/deltaUp"
+                            deltaView.setTextColor(resources.getColor(R.color.deltaUp))
+                            deltaDown.visibility = View.INVISIBLE
                             deltaUp.visibility = View.VISIBLE
                         }else{
-//                            deltaView.textColor = "@color/deltaDown"
+                            deltaView.setTextColor(resources.getColor(R.color.deltaDown))
+                            deltaUp.visibility = View.INVISIBLE
                             deltaDown.visibility = View.VISIBLE
+                            change24h = -change24h
                         }
+                        marketPriceView.text = "1 BTC = $$price"
+                        deltaView.text =  String.format("%.2f", change24h * 100) + "%"
+                        usdView.text = "$" + String.format("%.2f", dollarAmount * price.toFloat())
                     }
                     else {
                         Log.d("CODE1", response.body()!!.message)
