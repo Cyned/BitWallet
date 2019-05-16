@@ -25,6 +25,7 @@ class Wallet : Activity() {
     private var PRIVATE_MODE = 0
     private val PREF_TOKEN = "token"
     private val PREF_BALANCE = "balance"
+    private val PREF_EXCHANGE = "exchange"
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,6 +144,11 @@ class Wallet : Activity() {
                         sharedPref = getSharedPreferences(PREF_BALANCE, PRIVATE_MODE)
                         val dollarAmount: Float = sharedPref.getFloat(PREF_BALANCE, 0.0f)
                         usdView.text = "$" + String.format("%.2f", dollarAmount * price)
+
+                        sharedPref = getSharedPreferences(PREF_EXCHANGE, PRIVATE_MODE)
+                        val editor = sharedPref.edit()
+                        editor.putFloat(PREF_EXCHANGE, price)
+                        editor.apply()
                     }
                     else {
                         Log.d("CODE1", response.body()!!.message)

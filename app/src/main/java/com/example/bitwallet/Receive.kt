@@ -13,14 +13,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import GetAddressModel
 import android.graphics.Bitmap
-import android.widget.Button
 import android.widget.Toast
 import net.glxn.qrgen.android.QRCode
-import android.R.attr.label
 import android.annotation.SuppressLint
 import android.content.*
-import android.content.Context.CLIPBOARD_SERVICE
-import android.support.v4.content.ContextCompat.getSystemService
 
 
 

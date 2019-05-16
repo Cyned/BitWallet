@@ -1,5 +1,6 @@
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
 data class LoginModel (
@@ -48,3 +49,11 @@ data class SendModel (
     @SerializedName("txid") @Expose val txid: String,
     @SerializedName("status") @Expose val status: String
 )
+
+data class TransactionsModel (
+    @SerializedName("x-access-token") @Expose val token: String,
+    @SerializedName("txs") @Expose val txs: List<Map<String, out String>>,
+    @SerializedName("status") @Expose val status: String,
+    @SerializedName("auth") @Expose val auth: String,
+    @SerializedName("message") @Expose val message: String
+ )

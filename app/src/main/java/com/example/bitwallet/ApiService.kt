@@ -5,6 +5,7 @@ import BalanceModel
 import ExchangeModel
 import GetAddressModel
 import SendModel
+import TransactionsModel
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 import retrofit2.Call
@@ -53,4 +54,9 @@ interface ApiService {
         @Header("amount") amount: Float,
         @Header("comment") comment: String
     ) : Call<SendModel>
+
+    @GET("/wallet/getTransactions")
+    fun getTransactions(
+        @Header("x-access-token") token: String
+    ) : Call<TransactionsModel>
 }
