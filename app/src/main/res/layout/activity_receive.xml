@@ -12,16 +12,16 @@
 			app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
 			app:layout_constraintStart_toStartOf="parent"
 			android:layout_marginStart="8dp" android:id="@+id/navbar"
-			app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp">
+			app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp" android:padding="9dp">
 
 		<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="0dp" app:srcCompat="?attr/homeAsUpIndicator"
+				android:layout_width="20dp"
+				android:layout_height="20dp" android:src="@android:drawable/arrow_down_float"
 				android:id="@+id/home" android:layout_weight="0.2" android:layout_marginStart="8dp"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent"
-				android:layout_margin="0dp"/>
+				app:layout_constraintBottom_toBottomOf="parent" android:layout_margin="0dp"
+				android:layout_marginLeft="8dp"/>
 		<TextView
 				android:text="@string/receiveTitle"
 				android:layout_height="wrap_content"
@@ -31,47 +31,63 @@
 				app:layout_constraintTop_toTopOf="parent" android:layout_weight="0.8"
 				app:layout_constraintBottom_toBottomOf="parent"
 				android:layout_width="wrap_content" android:layout_marginEnd="256dp" android:layout_marginRight="256dp"
-				app:layout_constraintVertical_bias="0.0"/>
+				app:layout_constraintVertical_bias="0.0" app:layout_constraintStart_toEndOf="@+id/home"
+				android:layout_marginStart="8dp" android:layout_marginLeft="8dp"/>
 	</android.support.constraint.ConstraintLayout>
-	<ImageView
-			android:layout_width="0dp"
-			android:layout_height="223dp" app:srcCompat="@android:drawable/ic_menu_recent_history"
-			android:id="@+id/qrcode"
-			app:layout_constraintEnd_toEndOf="parent"
-			android:layout_marginEnd="8dp"
+	<ScrollView
 			app:layout_constraintStart_toStartOf="parent"
-			android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.0"
-			android:layout_marginLeft="16dp" android:layout_marginRight="16dp" tools:layout_editor_absoluteY="155dp"/>
-	<LinearLayout
-			android:orientation="horizontal"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
-			app:layout_constraintTop_toBottomOf="@+id/qrcode" app:layout_constraintEnd_toEndOf="parent"
-			android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-			app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-			android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.248"
-			android:id="@+id/user">
-		<TextView
-				android:text="mtkdk245k4356k3kl3...234jn2n35"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent" android:id="@+id/userCode"
-				app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-				android:layout_marginStart="8dp"
-				app:layout_constraintBottom_toBottomOf="parent" style="@style/SilentHill" android:textSize="16sp"
-				android:layout_weight="0.5" android:layout_gravity="center_vertical"
-				android:gravity="center_horizontal|center_vertical"/>
-		<TextView
-				android:text="@string/copy"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent" android:id="@+id/copyBtn"
-				app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@+id/userCode"
-				android:layout_marginStart="8dp" style="@style/CommonUse"
-				android:textSize="16sp" android:layout_weight="0.5"
-				android:layout_gravity="start|center_vertical" android:gravity="start|center_vertical"/>
-	</LinearLayout>
+			android:id="@+id/scrollBar" android:scrollbars="none"
+			android:scrollbarAlwaysDrawHorizontalTrack="false" android:background="@color/mainBackground"
+			android:layout_height="0dp" android:layout_width="0dp"
+			app:layout_constraintTop_toBottomOf="@+id/navbar">
+		<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+		              android:orientation="vertical">
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" app:srcCompat="@android:drawable/ic_menu_recent_history"
+					android:id="@+id/qrcode"
+					android:layout_marginEnd="8dp"
+					android:layout_marginStart="8dp"
+					android:layout_marginLeft="8dp" android:layout_marginRight="16dp"
+					android:contentDescription="Address" android:layout_gravity="center"
+					android:layout_marginTop="150dp" android:layout_marginBottom="20dp"/>
+			<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp"
+					android:layout_marginEnd="8dp" android:layout_marginRight="20dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+					android:id="@+id/user" android:background="@color/authInput"
+					android:layout_gravity="center" android:paddingBottom="12dp" android:paddingLeft="20dp"
+					android:paddingTop="12dp" android:paddingRight="20dp">
+				<TextView
+						android:text="mtkdk245k4...234jn2n353d"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent" android:id="@+id/userCode"
+						app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+						android:layout_marginStart="8dp"
+						app:layout_constraintBottom_toBottomOf="parent" style="@style/SilentHill"
+						android:textSize="16sp"
+						android:layout_weight="0.5" android:layout_gravity="center_vertical"
+						android:gravity="center_horizontal|center_vertical" android:layout_marginLeft="8dp"
+						android:layout_marginRight="8dp"/>
+				<TextView
+						android:text="@string/copy"
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent" android:id="@+id/copyBtn"
+						app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintStart_toEndOf="@+id/userCode"
+						android:layout_marginStart="8dp" style="@style/CommonUse"
+						android:textSize="16sp" android:layout_weight="0.5"
+						android:layout_gravity="start|center_vertical" android:gravity="start|center_vertical"
+						android:layout_marginLeft="8dp" android:layout_marginRight="8dp"/>
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
 </android.support.constraint.ConstraintLayout>

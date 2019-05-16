@@ -8,8 +8,9 @@
 	<string name="receiveTitle">Receive</string>
 	<string name="copy">COPY</string>
 
-	<!--  Success -->
+	<!--  Success/Fail -->
 	<string name="success">Success</string>
+	<string name="fail">Fail</string>
 	<string name="ok">OK</string>
 
 	<!--  Settings -->

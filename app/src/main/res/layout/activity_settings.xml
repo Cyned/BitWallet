@@ -16,12 +16,13 @@
 			app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp">
 
 		<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="0dp" app:srcCompat="?attr/homeAsUpIndicator"
+				android:layout_width="20dp"
+				android:layout_height="20dp" android:src="@android:drawable/arrow_down_float"
 				android:id="@+id/home" android:layout_weight="0.2" android:layout_marginStart="8dp"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent" android:layout_margin="0dp"/>
+				app:layout_constraintBottom_toBottomOf="parent" android:layout_margin="0dp"
+				android:layout_marginLeft="8dp"/>
 		<TextView
 				android:text="@string/settingsTitle"
 				android:layout_height="wrap_content"

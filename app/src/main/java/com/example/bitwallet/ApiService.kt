@@ -3,6 +3,8 @@ package com.example.bitwallet
 import LoginModel
 import BalanceModel
 import ExchangeModel
+import GetAddressModel
+import SendModel
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 import retrofit2.Call
@@ -38,4 +40,17 @@ interface ApiService {
     fun getExchange(
         @Header("x-access-token") token: String
     ) : Call<ExchangeModel>
+
+    @GET("/wallet/createAddress")
+    fun getAddress(
+        @Header("x-access-token") token: String
+    ) : Call<GetAddressModel>
+
+    @GET("/wallet/sendTransaction")
+    fun send(
+        @Header("x-access-token") token: String,
+        @Header("address") address: String,
+        @Header("amount") amount: String,
+        @Header("comment") comment: String
+    ) : Call<SendModel>
 }

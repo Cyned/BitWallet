@@ -14,7 +14,9 @@
 			app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
 			android:id="@+id/scrollBar" android:scrollbars="none"
-			android:scrollbarAlwaysDrawHorizontalTrack="false" android:background="@color/authInput">
+			android:scrollbarAlwaysDrawHorizontalTrack="false" android:background="@color/mainBackground"
+			android:layout_marginTop="8dp" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+			android:layout_marginBottom="8dp" android:layout_marginLeft="8dp" android:layout_marginStart="8dp">
 		<LinearLayout
 				android:orientation="vertical"
 				android:layout_width="match_parent"
@@ -140,12 +142,8 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:id="@+id/loginTitle"
-					android:layout_marginTop="8dp"
-					android:layout_marginLeft="8dp"
 					android:layout_marginStart="8dp"
 					android:layout_marginEnd="8dp"
-					android:layout_marginRight="8dp"
-					android:layout_margin="8dp"
 					android:paddingLeft="8dp"
 					android:paddingRight="8dp">
 				<TextView

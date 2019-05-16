@@ -16,25 +16,23 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import BalanceModel
 import ExchangeModel
-import android.graphics.Color
+import android.annotation.SuppressLint
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_wallet.*
-import org.w3c.dom.Text
 
 
 class Wallet : Activity() {
 
     private var PRIVATE_MODE = 0
-    private val PREF_NAME = "token"
+    private val PREF_TOKEN = "token"
+    private val PREF_BALANCE = "balance"
     private lateinit var sharedPref: SharedPreferences
-    private var dollarAmount: Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wallet)
 
-        sharedPref = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
-        val token: String = sharedPref.getString(PREF_NAME, "").toString()
+        sharedPref = getSharedPreferences(PREF_TOKEN, PRIVATE_MODE)
+        val token: String = sharedPref.getString(PREF_TOKEN, "").toString()
         // Set wallet information
         val amountView = findViewById<View>(R.id.amount) as TextView
         val decimalView = findViewById<View>(R.id.decimal) as TextView
@@ -85,11 +83,15 @@ class Wallet : Activity() {
             override fun onResponse(call: Call<BalanceModel>?, response: Response<BalanceModel>?) {
                 if(response?.body() != null) {
                     if(response.isSuccessful and (response.body()!!.status == "success")) {
-                        val balance: String = response.body()!!.balance
+                        val balance: Float = response.body()!!.balance
                         Log.d("Status", "Receive balance: $balance")
-                        dollarAmount = balance.toFloat()
-                        amountView.text = balance.slice(IntRange(start=0, endInclusive = 4))
-                        decimalView.text = balance.slice(IntRange(start=4, endInclusive = 6))
+
+                        val editor = sharedPref.edit()
+                        editor.putFloat(PREF_BALANCE, balance)
+                        editor.apply()
+
+                        amountView.text = balance.toString().slice(IntRange(start=0, endInclusive = 4))
+                        decimalView.text = balance.toString().slice(IntRange(start=4, endInclusive = 6))
 
                     }
                     else {
@@ -117,11 +119,12 @@ class Wallet : Activity() {
                 Log.d("FAIL1", t.toString())
             }
 
+            @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<ExchangeModel>?, response: Response<ExchangeModel>?) {
                 if(response?.body() != null) {
                     if(response.isSuccessful and (response.body()!!.status == "success")) {
-                        val price: String = response.body()!!.price
-                        var change24h : Float = response.body()!!.change24h.toFloat()
+                        val price: Float = response.body()!!.price
+                        var change24h : Float = response.body()!!.change24h
                         Log.d("Status", "Receive price: $price")
 
                         if(change24h>=0) {
@@ -136,7 +139,10 @@ class Wallet : Activity() {
                         }
                         marketPriceView.text = "1 BTC = $$price"
                         deltaView.text =  String.format("%.2f", change24h * 100) + "%"
-                        usdView.text = "$" + String.format("%.2f", dollarAmount * price.toFloat())
+
+                        sharedPref = getSharedPreferences(PREF_BALANCE, PRIVATE_MODE)
+                        val dollarAmount: Float = sharedPref.getFloat(PREF_BALANCE, 0.0f)
+                        usdView.text = "$" + String.format("%.2f", dollarAmount * price)
                     }
                     else {
                         Log.d("CODE1", response.body()!!.message)
