@@ -13,7 +13,7 @@
 	<!-- Login and Register Strings -->
 	<string name="Register">Register</string>
 	<string name="Login">Login</string>
-	<string name="signOut">sign out</string>
+	<string name="signOut"><u>sign out</u></string>
 	<string name="RegisterUnder">
 		<u>Register</u>
 	</string>

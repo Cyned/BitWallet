@@ -10,10 +10,10 @@
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:layout_marginTop="8dp"
+			android:layout_height="wrap_content"
 			app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-			android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-			android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:id="@+id/navbar"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:id="@+id/navbar"
 			android:paddingLeft="10dp" android:paddingBottom="10dp" android:paddingTop="10dp"
 			android:paddingRight="10dp" android:background="@color/authInput">
 		<ImageView
@@ -60,15 +60,15 @@
 					android:padding="8dp" android:background="@color/authInput">
 				<TextView
 						android:text="@string/to"
-						android:layout_width="wrap_content"
-						android:layout_height="match_parent" android:id="@+id/toTxt" android:layout_weight="0.1"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent" android:id="@+id/toTxt" android:layout_weight="0.9"
 						style="@style/SilentHill" android:textSize="16sp" android:gravity="start|center_vertical"/>
 				<EditText
-						android:text="2Mt1akgAzjnCQDaQdeayos6imc1cu6FU3QU"
-						android:layout_width="wrap_content"
-						android:layout_height="match_parent" android:id="@+id/toUser" android:layout_weight="0.9"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent" android:id="@+id/toUser" android:layout_weight="0.1"
 						android:textSize="16sp" style="@style/CommonUse" android:gravity="start|center_vertical"
-						android:paddingLeft="4dp" android:paddingRight="4dp"/>
+						android:paddingLeft="4dp" android:paddingRight="4dp"
+						android:text="2Mt1akgAzjnCQDaQdeayos6imc1cu6FU3QU"/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="horizontal"
@@ -85,7 +85,7 @@
 				<EditText
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
-						android:inputType="number"
+						android:inputType="number|text"
 						android:ems="10"
 						android:id="@+id/amountInput" android:layout_weight="0.7" android:text="0.00"
 						style="@style/SilentHill" android:textSize="16sp"
@@ -163,7 +163,7 @@
 				<EditText
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
-						android:inputType="number"
+						android:inputType="text"
 						android:ems="10"
 						android:id="@+id/memoInput" android:layout_weight="0.7"
 						style="@style/SilentHill" android:textSize="16sp"
