@@ -73,7 +73,7 @@
 						android:visibility="visible"
 						android:layout_height="match_parent" android:id="@+id/mailBtn" android:layout_weight="0.15"
 						android:paddingLeft="15dp" android:paddingRight="15dp"
-						android:contentDescription="@string/ClearDescription"/>
+						android:contentDescription="@string/ClearDescription" android:tint="@color/clear"/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="horizontal"
@@ -104,12 +104,13 @@
 						android:text="1234"/>
 				<ImageView
 						android:layout_width="0dp"
-						android:src="@drawable/next"
+						android:src="@mipmap/next"
 						android:layout_height="match_parent"
 						android:id="@+id/login"
 						android:adjustViewBounds="true"
 						android:visibility="visible"
-						android:layout_weight="0.15" android:contentDescription="@string/Login"/>
+						android:layout_weight="0.15" android:contentDescription="@string/Login"
+				/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="horizontal"

@@ -10,4 +10,7 @@
     <color name="authInput">#1E1F23</color>
     <color name="deltaUp">#198216</color>
     <color name="deltaDown">#d80012</color>
+
+    <color name="clear">#686868</color>
+    <color name="fail">#b7121d</color>
 </resources>

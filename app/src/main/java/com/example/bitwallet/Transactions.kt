@@ -134,6 +134,7 @@ class Transactions : Activity() {
         )
         time.layoutParams = params
         time.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
+        time.setBackgroundColor(resources.getColor(R.color.colorAccent))
 //        time.setTextAppearance(R.style.CommonUse)
 //        time.id="@+id/time"
 
@@ -145,6 +146,7 @@ class Transactions : Activity() {
         )
         statusMsg.layoutParams = params
         statusMsg.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
+        time.setBackgroundColor(resources.getColor(R.color.authComments))
 //        statusMsg.setTextAppearance(R.style.SilentHill)
 //        statusMsg.id="@+id/statusMsg"
 
@@ -161,7 +163,8 @@ class Transactions : Activity() {
         amountL.orientation = LinearLayout.HORIZONTAL
         params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view width
-            ViewGroup.LayoutParams.WRAP_CONTENT // This will define text view height
+            ViewGroup.LayoutParams.WRAP_CONTENT, // This will define text view height
+            0.5f
         )
         amountL.layoutParams = params
 //        amount.id="@+id/amountL"
@@ -206,11 +209,13 @@ class Transactions : Activity() {
         amountDollar.text = (transaction["amount"].toString().toFloat() * price).toString() + "$"
         params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view width
-            ViewGroup.LayoutParams.WRAP_CONTENT // This will define text view height
+            ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view height
+            0.5f
         )
         amountBtc.layoutParams = params
         amountDollar.gravity = Gravity.END
         amountDollar.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
+        amountDollar.setBackgroundColor(resources.getColor(R.color.authComments))
 //        amountDollar.setTextAppearance(R.style.SilentHill)
 //        amountDollar.id="@+id/amountDollar"
 

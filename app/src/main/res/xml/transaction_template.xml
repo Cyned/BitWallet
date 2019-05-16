@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<LinearLayout
+			xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" android:id="@+id/trans"
+			android:background="@color/mainBackground" android:layout_marginTop="2dp"
+			android:layout_marginBottom="2dp" android:paddingTop="4dp" android:paddingBottom="4dp"
+			android:paddingRight="8dp" android:paddingLeft="8dp">
+		<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent" android:layout_weight="0.5" android:padding="4dp"
+				android:id="@+id/status">
+			<TextView
+					android:text="2 minutes ago"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" android:id="@+id/time" style="@style/CommonUse"
+					android:textSize="16sp"/>
+			<TextView
+					android:text="pending..."
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/statusMsg" android:layout_weight="1"
+					style="@style/SilentHill" android:textSize="14sp"/>
+		</LinearLayout>
+		<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent" android:layout_weight="0.5" android:padding="4dp"
+				android:id="@+id/amount">
+			<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent" android:layout_weight="0.5">
+				<TextView
+						android:text="0.100 BTC"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content" android:id="@+id/amountBtc" android:gravity="end"
+						android:textSize="16sp" android:textColor="#198216" android:layout_weight="0.2"
+						android:layout_marginLeft="4dp" android:layout_marginRight="4dp"/>
+				<ImageView
+						android:layout_width="100dp"
+						android:layout_height="21dp" app:srcCompat="@drawable/up" android:id="@+id/down"
+						android:layout_weight="0.8" android:layout_gravity="end" android:padding="2dp"
+				/>
+			</LinearLayout>
+			<TextView
+					android:text="$292.23"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent" android:id="@+id/amountDollar" android:gravity="end"
+					android:textSize="14sp" style="@style/SilentHill" android:layout_weight="0.5"/>
+		</LinearLayout>
+	</LinearLayout>
+
+</PreferenceScreen>

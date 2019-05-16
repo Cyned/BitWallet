@@ -18,7 +18,8 @@
 			android:paddingRight="10dp" android:background="@color/authInput">
 		<ImageView
 				android:layout_width="20dp"
-				android:layout_height="20dp" android:src="@android:drawable/arrow_down_float"
+				android:layout_height="20dp" android:src="?attr/actionModeCloseDrawable"
+				android:tint="@android:color/white"
 				android:id="@+id/home" android:layout_weight="0.05"
 				android:layout_margin="0dp" android:layout_marginStart="8dp"
 				android:layout_marginLeft="20dp"

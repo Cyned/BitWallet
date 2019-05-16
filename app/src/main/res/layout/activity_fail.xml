@@ -27,7 +27,7 @@
 			app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
 			android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
 			app:layout_constraintBottom_toBottomOf="parent" style="@style/CommonUse"
-			android:background="@color/deltaDown" app:layout_constraintHorizontal_bias="0.496"
+			android:background="@drawable/round_btn_fail" app:layout_constraintHorizontal_bias="0.496"
 			android:textSize="28sp" android:layout_marginTop="8dp"
 			app:layout_constraintTop_toBottomOf="@+id/status" app:layout_constraintVertical_bias="0.637"
 			android:padding="8dp"/>
