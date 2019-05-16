@@ -89,10 +89,7 @@ class Send : Activity() {
             .build()
         val messageAPI = retrofit.create(ApiService::class.java)
         val call: Call<SendModel> = messageAPI.send(token=token, address=address, amount=amount, comment=comment)
-        Log.d("Status", amount.toString())
-        Log.d("Status", comment)
-        Log.d("Status", address)
-        Log.d("Status", token)
+
         call.enqueue(object : Callback<SendModel> {
 
             override fun onFailure(call: Call<SendModel>?, t: Throwable?) {
