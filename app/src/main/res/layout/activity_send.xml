@@ -64,7 +64,7 @@
 						android:layout_height="match_parent" android:id="@+id/toTxt" android:layout_weight="0.1"
 						style="@style/SilentHill" android:textSize="16sp" android:gravity="start|center_vertical"/>
 				<EditText
-						android:text="2N9qnsfAUnRirx9xSjm5Ss2vdBt52QxDop3"
+						android:text="2Mt1akgAzjnCQDaQdeayos6imc1cu6FU3QU"
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent" android:id="@+id/toUser" android:layout_weight="0.9"
 						android:textSize="16sp" style="@style/CommonUse" android:gravity="start|center_vertical"

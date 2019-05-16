@@ -50,7 +50,7 @@ interface ApiService {
     fun send(
         @Header("x-access-token") token: String,
         @Header("address") address: String,
-        @Header("amount") amount: String,
+        @Header("amount") amount: Float,
         @Header("comment") comment: String
     ) : Call<SendModel>
 }

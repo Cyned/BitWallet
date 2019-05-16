@@ -77,8 +77,8 @@ class Send : Activity() {
     private fun send(token: String) {
 
         val amountView = findViewById<View>(R.id.amountInput) as TextView
-        val commentView = findViewById<View>(R.id.amountInput) as TextView
-        val addressView = findViewById<View>(R.id.memoInput) as TextView
+        val commentView = findViewById<View>(R.id.memoInput) as TextView
+        val addressView = findViewById<View>(R.id.toUser) as TextView
         val amount: Float = amountView.text.toString().toFloat()
         val comment: String= commentView.text.toString()
         val address: String = addressView.text.toString()
@@ -88,8 +88,11 @@ class Send : Activity() {
             .baseUrl(URL)
             .build()
         val messageAPI = retrofit.create(ApiService::class.java)
-        val call: Call<SendModel> = messageAPI.send(token, address, amount.toString(), comment)
-
+        val call: Call<SendModel> = messageAPI.send(token=token, address=address, amount=amount, comment=comment)
+        Log.d("Status", amount.toString())
+        Log.d("Status", comment)
+        Log.d("Status", address)
+        Log.d("Status", token)
         call.enqueue(object : Callback<SendModel> {
 
             override fun onFailure(call: Call<SendModel>?, t: Throwable?) {

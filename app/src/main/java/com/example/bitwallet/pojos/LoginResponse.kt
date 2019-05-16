@@ -41,7 +41,7 @@ data class GetAddressModel (
 data class SendModel (
     @SerializedName("x-access-token") @Expose val token: String,
     @SerializedName("address") @Expose val address: String,
-    @SerializedName("amount") @Expose val amount: String,
+    @SerializedName("amount") @Expose val amount: Float,
     @SerializedName("comment") @Expose val comment: String,
     @SerializedName("auth") @Expose val auth: String,
     @SerializedName("message") @Expose val message: String,
