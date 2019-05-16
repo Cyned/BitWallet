@@ -3,25 +3,32 @@ package com.example.bitwallet
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import LoginModel
+import android.content.SharedPreferences
 
 
 class Register : Activity() {
 
     val mAuth = FirebaseAuth.getInstance()
-//    lateinit var mDatabase : DatabaseReference
+    private var PRIVATE_MODE = 0
+    private val PREF_NAME = "token"
+    private lateinit var sharedPref: SharedPreferences;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        sharedPref = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
 
-        val regBtn = findViewById<View>(R.id.register) as Button
+        val regBtn = findViewById<ImageView>(R.id.register)
         regBtn.setOnClickListener(View.OnClickListener {
             view -> register ()
         })
@@ -31,17 +38,72 @@ class Register : Activity() {
                 view -> login ()
         })
 
-        val mailBtn = findViewById<View>(R.id.mailBtn) as Button
+        val mailBtn = findViewById<ImageView>(R.id.mailBtn)
         val mailEditText = findViewById<View>(R.id.mailInput) as EditText
         mailBtn.setOnClickListener(View.OnClickListener {
                 view -> editTextClean(mailEditText)
         })
 
-        val passBtn = findViewById<View>(R.id.passBtn) as Button
+        val passBtn = findViewById<ImageView>(R.id.passBtn)
         val passEditText = findViewById<View>(R.id.passInput) as EditText
         passBtn.setOnClickListener(View.OnClickListener {
                 view -> editTextClean(passEditText)
         })
+    }
+
+    private fun firebaseRegister(email: String, password: String) {
+        mAuth
+            .createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d("Status", "Firebase succesfully registered.")
+                    bitwalletRegister(username = email, password = password)
+                } else
+                    Log.d("Error", "createUserWithEmail:failure" + task.exception)
+                    toastFail("Error while registering :(")
+            }
+    }
+
+    private fun bitwalletRegister(username: String, password: String) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val messageAPI = retrofit.create(ApiService::class.java)
+        val call: Call<LoginModel> = messageAPI.register(username, password)
+
+        call.enqueue(object : Callback<LoginModel> {
+
+            override fun onFailure(call: Call<LoginModel>?, t: Throwable?) {
+                Log.d("FAIL!", t.toString())
+            }
+
+            override fun onResponse(call: Call<LoginModel>?, response: Response<LoginModel>?) {
+                if(response?.body() != null) {
+                    if(response.isSuccessful and (response.body()!!.status == "success")) {
+                        val token: String = response.body()!!.token
+                        Log.d("Status", "Receive token: $token")
+                        // Save token to memory
+                        val editor = sharedPref.edit()
+                        editor.putString(PREF_NAME, token)
+                        editor.apply()
+                        goToWallet()
+                    }
+                    else {
+                        Log.d("CODE1", response.body()!!.message)
+                        toastFail(response.body()!!.message)
+                    }
+                }else{
+                Log.d("CODE1", "CODE IS $response.code()")
+                toastFail("Invalid credentials :|")
+            }
+            }
+        })
+    }
+
+    private fun toastFail(msg: String){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
     private fun register() {
@@ -53,29 +115,19 @@ class Register : Activity() {
         val password = passwordTxt.text.toString()
         val repPassword = repPasswordTxt.text.toString()
 
-        if (!email.isEmpty() && !password.isEmpty() && !repPassword.isEmpty()) {
+        if (!email.isEmpty() && !password.isEmpty() && !repPassword.isEmpty() && email.contains("@") && (password.length >=6)) {
             if (password == repPassword) {
-                mAuth
-                    .createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-//                            val user = mAuth.currentUser
-//                            val uid = user!!.uid
-//                            mDatabase.child(uid).child("Email").setValue(email)
-//                            mDatabase.child(uid).child("Password").setValue(password)
-                            startActivity(Intent(this, Timeline::class.java))
-                            Toast.makeText(this, "Successfully registered :)", Toast.LENGTH_LONG).show()
-                        } else
-                            System.err.println("createUserWithEmail:failure" + task.exception)
-                            Toast.makeText(this, "Error registering, try again later :(", Toast.LENGTH_LONG).show()
-                    }
+                firebaseRegister(email = email, password = password)
             } else {
-                Toast.makeText(this, "Passwords are different :|", Toast.LENGTH_LONG).show()
+               toastFail("Passwords are different :|")
             }
         }else {
-            Toast.makeText(this,"Please enter up the Credentials :|", Toast.LENGTH_LONG).show()
+            toastFail("Please enter up the Credentials :|")
         }
+    }
 
+    private fun goToWallet() {
+        startActivity(Intent(this, Wallet::class.java))
     }
 
     private fun login(){

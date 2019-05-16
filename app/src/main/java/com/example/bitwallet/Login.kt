@@ -3,25 +3,43 @@ package com.example.bitwallet
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import LoginModel
+import android.content.SharedPreferences
+import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_receive.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class Login : Activity() {
+
+class Login : Activity(){
 
     val mAuth = FirebaseAuth.getInstance()
+    private var PRIVATE_MODE = 0
+    private val PREF_NAME = "token"
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val loginBtn = findViewById<View>(R.id.login) as Button
+        sharedPref = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
+        // delete previous token
+        val editor = sharedPref.edit()
+        editor.putString(PREF_NAME, "")
+        editor.apply()
+
+        val loginBtn = findViewById<ImageView>(R.id.login)
         loginBtn.setOnClickListener(View.OnClickListener {
             view -> login()
         })
@@ -31,37 +49,85 @@ class Login : Activity() {
             view -> register()
         })
 
-        val mailBtn = findViewById<View>(R.id.mailBtn) as Button
+        val mailBtn = findViewById<ImageView>(R.id.mailBtn)
         val mailEditText = findViewById<View>(R.id.mailInput) as EditText
         mailBtn.setOnClickListener(View.OnClickListener {
             view -> editTextClean(mailEditText)
         })
     }
 
-    private fun login () {
+    private fun firebaseLogin (email: String, password: String) {
+        mAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
+                if (task.isSuccessful) {
+                    bitwalletLogin(username = email, password = password)
+                } else {
+                    Log.d("Error", "loginUserWithEmail:failure" + task.exception)
+                    toastFail("Error while logging :(")
+                }
+            })
+    }
+
+    private fun bitwalletLogin(username: String, password: String) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val messageAPI = retrofit.create(ApiService::class.java)
+        val call: Call<LoginModel> = messageAPI.login(username, password)
+
+        call.enqueue(object : Callback<LoginModel> {
+
+            override fun onFailure(call: Call<LoginModel>?, t: Throwable?) {
+                Log.d("FAIL1", t.toString())
+            }
+
+            override fun onResponse(call: Call<LoginModel>?, response: Response<LoginModel>?) {
+                Log.d("Status", response?.body().toString())
+                Log.d("Status", response.toString())
+                if(response?.body() != null) {
+                    if(response.isSuccessful and (response.body()!!.status == "success")) {
+                        val token: String = response.body()!!.token
+                        Log.d("Status", "Receive token: $token")
+                        // Save token to memory
+                        val editor = sharedPref.edit()
+                        editor.putString(PREF_NAME, token)
+                        editor.apply()
+                        goToWallet()
+                    }
+                    else {
+                        Log.d("CODE1", response.body()!!.message)
+                        toastFail(response.body()!!.message)
+                    }
+                }else{
+                    Log.d("CODE1", "CODE IS $response.code()")
+                    toastFail("Invalid credentials :|")
+                }
+            }
+        })
+    }
+
+    private fun toastFail(msg: String){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    private fun login() {
         val emailTxt = findViewById<View>(R.id.mailInput) as EditText
         val passwordTxt = findViewById<View>(R.id.passInput) as EditText
         val email = emailTxt.text.toString()
         val password = passwordTxt.text.toString()
 
-
         if (!email.isEmpty() && !password.isEmpty()) {
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
-                if (task.isSuccessful){
-                    startActivity(Intent(this, Timeline::class.java))
-                    Toast.makeText(this, "Successfully Logged in :)", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(this, "Error Logging in :(", Toast.LENGTH_LONG).show()
-                }
-            })
+//            firebaseLogin(email = email, password = password)
+            bitwalletLogin(username=email, password = password)
         }else {
             Toast.makeText(this, "Please fill up the Credentials :(", Toast.LENGTH_LONG).show()
         }
     }
 
-//    private fun register() {
-//        startActivity(Intent(this, Register::class.java))
-//    }
+    private fun goToWallet() {
+        startActivity(Intent(this, Wallet::class.java))
+    }
 
     private fun register() {
         startActivity(Intent(this, com.example.bitwallet.Register::class.java))
@@ -69,6 +135,14 @@ class Login : Activity() {
 
     private fun editTextClean(editText: EditText){
         editText.text.clear()
+    }
+
+    private fun showResult(token: String){
+        Toast.makeText(this, token, Toast.LENGTH_LONG).show()
+    }
+
+    private fun showError(msg: String){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
 }
