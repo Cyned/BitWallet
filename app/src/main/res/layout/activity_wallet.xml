@@ -23,12 +23,11 @@
 			<android.support.constraint.ConstraintLayout
 					android:layout_width="match_parent"
 					android:layout_height="320dp" app:layout_constraintTop_toTopOf="@+id/scroll"
-					app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="0dp"
-					android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-					android:layout_marginEnd="8dp"
-					android:layout_marginRight="0dp" android:id="@+id/Status"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					android:id="@+id/Status"
 					app:layout_constraintBottom_toBottomOf="@+id/scroll"
-					android:layout_gravity="center" android:layout_marginTop="8dp" android:layout_marginBottom="0dp"
+					android:layout_gravity="center"
 					android:background="@color/mainBackground" android:paddingLeft="0dp" android:paddingTop="0dp"
 					android:paddingRight="0dp" android:paddingBottom="0dp">
 
@@ -95,9 +94,8 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" android:layout_marginTop="8dp"
 					app:layout_constraintTop_toBottomOf="@+id/Status" app:layout_constraintStart_toStartOf="parent"
-					android:layout_marginLeft="0dp" android:layout_marginStart="8dp"
 					app:layout_constraintEnd_toEndOf="parent"
-					android:layout_marginEnd="8dp" android:layout_marginRight="0dp" android:id="@+id/exchange"
+					android:id="@+id/exchange"
 					android:layout_gravity="center" android:layout_marginBottom="0dp"
 					android:background="@color/mainBackground">
 
@@ -175,7 +173,7 @@
 							android:layout_height="match_parent"
 							android:layout_marginEnd="8dp"
 							android:layout_marginStart="8dp" android:id="@+id/send" android:padding="8dp"
-							android:background="@color/mainBackground"
+							android:background="@drawable/round_menu_btn"
 							android:layout_weight="0.5"
 					>
 						<ImageView
@@ -208,7 +206,7 @@
 							android:id="@+id/receive" android:padding="8dp"
 							android:layout_marginStart="8dp"
 							android:layout_marginEnd="8dp"
-							android:background="@color/mainBackground"
+							android:background="@drawable/round_menu_btn"
 							android:layout_weight="0.5">
 
 						<ImageView
@@ -247,7 +245,7 @@
 							android:layout_marginEnd="8dp"
 							android:layout_marginStart="8dp"
 							android:id="@+id/transactions"
-							android:background="@color/mainBackground"
+							android:background="@drawable/round_menu_btn"
 							android:padding="8dp" android:layout_weight="0.5">
 
 						<ImageView
@@ -279,7 +277,7 @@
 							android:layout_marginStart="8dp"
 							android:layout_marginEnd="8dp"
 							android:id="@+id/info"
-							android:background="@color/mainBackground"
+							android:background="@drawable/round_menu_btn"
 							android:padding="8dp" android:layout_weight="0.5">
 
 						<ImageView

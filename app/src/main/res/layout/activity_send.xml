@@ -59,7 +59,7 @@
 					android:orientation="horizontal"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" android:layout_margin="16dp" android:id="@+id/to"
-					android:padding="8dp" android:background="@color/authInput">
+					android:padding="8dp" android:background="@drawable/round_input">
 				<TextView
 						android:text="@string/to"
 						android:layout_width="match_parent"
@@ -78,7 +78,7 @@
 					android:layout_height="wrap_content" android:layout_marginTop="50dp"
 					android:layout_marginBottom="16dp"
 					android:layout_marginLeft="16dp" android:layout_marginRight="16dp" android:id="@+id/amount"
-					android:padding="8dp" android:background="@color/authInput">
+					android:padding="8dp" android:background="@drawable/round_input">
 				<TextView
 						android:text="@string/amount"
 						android:layout_height="match_parent" android:id="@+id/amountTxt" android:layout_weight="0.3"
@@ -155,7 +155,7 @@
 					android:orientation="horizontal"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent" android:id="@+id/memo"
-					android:padding="8dp" android:background="@color/authInput" android:layout_marginLeft="16dp"
+					android:padding="8dp" android:background="@drawable/round_input" android:layout_marginLeft="16dp"
 					android:layout_marginRight="16dp">
 				<TextView
 						android:text="@string/memo"

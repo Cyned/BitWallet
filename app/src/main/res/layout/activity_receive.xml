@@ -61,7 +61,7 @@
 					android:layout_marginEnd="8dp" android:layout_marginRight="20dp"
 					android:layout_marginLeft="20dp"
 					android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-					android:id="@+id/user" android:background="@color/authInput"
+					android:id="@+id/user" android:background="@drawable/round_input"
 					android:layout_gravity="center" android:paddingBottom="12dp" android:paddingLeft="20dp"
 					android:paddingTop="12dp" android:paddingRight="20dp">
 				<TextView

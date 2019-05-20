@@ -43,7 +43,7 @@
 					android:orientation="horizontal"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:background="@color/authInput"
+					android:background="@drawable/round_input"
 					android:id="@+id/mailLayout"
 					android:layout_marginBottom="16dp"
 					android:layout_marginTop="16dp">
@@ -82,7 +82,7 @@
 					android:layout_marginBottom="16dp"
 					android:layout_marginTop="16dp"
 					android:id="@+id/passLayout"
-					android:background="@color/authInput">
+					android:background="@drawable/round_input">
 				<TextView
 						android:text="@string/passUpper"
 						android:layout_height="match_parent"
