@@ -22,9 +22,8 @@ import android.content.*
 
 class Receive : Activity() {
 
-    private var PRIVATE_MODE = 0
-    private val PREF_NAME = "token"
     private lateinit var sharedPref: SharedPreferences
+    private val internalMem = com.example.bitwallet.internalMem()
 
     private var userAddress: String = ""
 
@@ -32,8 +31,8 @@ class Receive : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receive)
 
-        sharedPref = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
-        val token: String = sharedPref.getString(PREF_NAME, "").toString()
+        sharedPref = getSharedPreferences(internalMem.PREF_NAME, internalMem.PRIVATE_MODE)
+        val token: String = sharedPref.getString(internalMem.PREF_TOKEN, "").toString()
 
         val userCode = findViewById<View>(R.id.userCode) as TextView
         val qrcode = findViewById<View>(R.id.qrcode) as ImageView

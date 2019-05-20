@@ -14,9 +14,9 @@ import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import LoginModel
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_receive.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,19 +25,19 @@ import retrofit2.Response
 class Login : Activity(){
 
     val mAuth = FirebaseAuth.getInstance()
-    private var PRIVATE_MODE = 0
-    private val PREF_NAME = "token"
     private lateinit var sharedPref: SharedPreferences
+    private val internalMem = com.example.bitwallet.internalMem()
 
+    @SuppressLint("ApplySharedPref")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        sharedPref = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
+        sharedPref = getSharedPreferences(internalMem.PREF_NAME, internalMem.PRIVATE_MODE)
         // delete previous token
         val editor = sharedPref.edit()
-        editor.putString(PREF_NAME, "")
-        editor.apply()
+        editor.putString(internalMem.PREF_TOKEN, "")
+        editor.commit()
 
         val loginBtn = findViewById<ImageView>(R.id.login)
         loginBtn.setOnClickListener(View.OnClickListener {
@@ -82,6 +82,7 @@ class Login : Activity(){
                 Log.d("FAIL1", t.toString())
             }
 
+            @SuppressLint("ApplySharedPref")
             override fun onResponse(call: Call<LoginModel>?, response: Response<LoginModel>?) {
                 Log.d("Status", response?.body().toString())
                 Log.d("Status", response.toString())
@@ -91,8 +92,9 @@ class Login : Activity(){
                         Log.d("Status", "Receive token: $token")
                         // Save token to memory
                         val editor = sharedPref.edit()
-                        editor.putString(PREF_NAME, token)
-                        editor.apply()
+                        editor.putString(internalMem.PREF_TOKEN, token)
+                        editor.putString(internalMem.PREF_USER, username)
+                        editor.commit()
                         goToWallet()
                     }
                     else {

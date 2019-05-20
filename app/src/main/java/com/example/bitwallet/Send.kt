@@ -20,18 +20,16 @@ import android.widget.Toast
 
 class Send : Activity() {
 
-    private var PRIVATE_MODE = 0
-    private val PREF_TOKEN = "token"
-    private val PREF_BALANCE = "balance"
     private lateinit var sharedPref: SharedPreferences
+    private val internalMem = com.example.bitwallet.internalMem()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send)
 
-        sharedPref = getSharedPreferences(PREF_TOKEN, PRIVATE_MODE)
-        val token: String = sharedPref.getString(PREF_TOKEN, "").toString()
-        val balance: Float = sharedPref.getFloat(PREF_BALANCE, 0.0f)
+        sharedPref = getSharedPreferences(internalMem.PREF_NAME, internalMem.PRIVATE_MODE)
+        val token: String = sharedPref.getString(internalMem.PREF_TOKEN, "").toString()
+        val balance: Float = sharedPref.getFloat(internalMem.PREF_BALANCE, 0.0f)
 
         val homeBtn = findViewById<View>(R.id.home) as ImageView
         homeBtn.setOnClickListener(View.OnClickListener {

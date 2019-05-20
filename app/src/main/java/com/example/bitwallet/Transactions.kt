@@ -14,32 +14,25 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import TransactionsModel
 import android.content.res.Resources
-import android.graphics.Typeface
-import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.v4.content.ContextCompat.startActivity
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.*
-import kotlinx.android.synthetic.main.activity_transactions.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Transactions : Activity() {
 
-    private var PRIVATE_MODE = 0
-    private val PREF_NAME = "token"
-    private val PREF_EXCHANGE = "exchange"
     private lateinit var sharedPref: SharedPreferences
+    private val internalMem = com.example.bitwallet.internalMem()
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transactions)
 
-        sharedPref = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
-        val token: String = sharedPref.getString(PREF_NAME, "").toString()
+        sharedPref = getSharedPreferences(internalMem.PREF_NAME, internalMem.PRIVATE_MODE)
+        val token: String = sharedPref.getString(internalMem.PREF_TOKEN, "").toString()
 
         val list = findViewById<LinearLayout>(R.id.list)
         getTransactions(token=token, listView = list)
@@ -199,8 +192,7 @@ class Transactions : Activity() {
             amountImage.setBackgroundResource(R.drawable.down)
         }
 
-        sharedPref = getSharedPreferences(PREF_EXCHANGE, PRIVATE_MODE)
-        val price: Float = sharedPref.getFloat(PREF_EXCHANGE, 0.0f)
+        val price: Float = sharedPref.getFloat(internalMem.PREF_EXCHANGE, 0.0f)
         amountDollar.text = String.format("%.2f", transaction["amount"].toString().toFloat() * price) + "$"
         params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view width

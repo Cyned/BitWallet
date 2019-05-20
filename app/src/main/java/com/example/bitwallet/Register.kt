@@ -13,20 +13,25 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import LoginModel
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 
 
 class Register : Activity() {
 
     val mAuth = FirebaseAuth.getInstance()
-    private var PRIVATE_MODE = 0
-    private val PREF_NAME = "token"
-    private lateinit var sharedPref: SharedPreferences;
+    private lateinit var sharedPref: SharedPreferences
+    private val internalMem = com.example.bitwallet.internalMem()
 
+    @SuppressLint("ApplySharedPref")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        sharedPref = getSharedPreferences(PREF_NAME, PRIVATE_MODE)
+        sharedPref = getSharedPreferences(internalMem.PREF_NAME, internalMem.PRIVATE_MODE)
+        // delete previous token
+        val editor = sharedPref.edit()
+        editor.putString(internalMem.PREF_TOKEN, "")
+        editor.commit()
 
         val regBtn = findViewById<ImageView>(R.id.register)
         regBtn.setOnClickListener(View.OnClickListener {
@@ -79,6 +84,7 @@ class Register : Activity() {
                 Log.d("FAIL!", t.toString())
             }
 
+            @SuppressLint("ApplySharedPref")
             override fun onResponse(call: Call<LoginModel>?, response: Response<LoginModel>?) {
                 if(response?.body() != null) {
                     if(response.isSuccessful and (response.body()!!.status == "success")) {
@@ -86,8 +92,9 @@ class Register : Activity() {
                         Log.d("Status", "Receive token: $token")
                         // Save token to memory
                         val editor = sharedPref.edit()
-                        editor.putString(PREF_NAME, token)
-                        editor.apply()
+                        editor.putString(internalMem.PREF_TOKEN, token)
+                        editor.putString(internalMem.PREF_USER, username)
+                        editor.commit()
                         goToWallet()
                     }
                     else {

@@ -22,18 +22,15 @@ import android.widget.ImageView
 
 class Wallet : Activity() {
 
-    private var PRIVATE_MODE = 0
-    private val PREF_TOKEN = "token"
-    private val PREF_BALANCE = "balance"
-    private val PREF_EXCHANGE = "exchange"
     private lateinit var sharedPref: SharedPreferences
+    private val internalMem = com.example.bitwallet.internalMem()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wallet)
 
-        sharedPref = getSharedPreferences(PREF_TOKEN, PRIVATE_MODE)
-        val token: String = sharedPref.getString(PREF_TOKEN, "").toString()
+        sharedPref = getSharedPreferences(internalMem.PREF_NAME, internalMem.PRIVATE_MODE)
+        val token: String = sharedPref.getString(internalMem.PREF_TOKEN, "").toString()
         // Set wallet information
         val amountView = findViewById<View>(R.id.amount) as TextView
         val decimalView = findViewById<View>(R.id.decimal) as TextView
@@ -81,6 +78,7 @@ class Wallet : Activity() {
                 Log.d("FAIL1", t.toString())
             }
 
+            @SuppressLint("ApplySharedPref")
             override fun onResponse(call: Call<BalanceModel>?, response: Response<BalanceModel>?) {
                 if(response?.body() != null) {
                     if(response.isSuccessful and (response.body()!!.status == "success")) {
@@ -88,8 +86,8 @@ class Wallet : Activity() {
                         Log.d("Status", "Receive balance: $balance")
 
                         val editor = sharedPref.edit()
-                        editor.putFloat(PREF_BALANCE, balance)
-                        editor.apply()
+                        editor.putFloat(internalMem.PREF_BALANCE, balance)
+                        editor.commit()
 
                         amountView.text = balance.toString().slice(IntRange(start=0, endInclusive = 4))
                         decimalView.text = balance.toString().slice(IntRange(start=4, endInclusive = 6))
@@ -120,7 +118,7 @@ class Wallet : Activity() {
                 Log.d("FAIL1", t.toString())
             }
 
-            @SuppressLint("SetTextI18n")
+            @SuppressLint("SetTextI18n", "ApplySharedPref")
             override fun onResponse(call: Call<ExchangeModel>?, response: Response<ExchangeModel>?) {
                 if(response?.body() != null) {
                     if(response.isSuccessful and (response.body()!!.status == "success")) {
@@ -141,14 +139,12 @@ class Wallet : Activity() {
                         marketPriceView.text = "1 BTC = $$price"
                         deltaView.text =  String.format("%.2f", change24h * 100) + "%"
 
-                        sharedPref = getSharedPreferences(PREF_BALANCE, PRIVATE_MODE)
-                        val dollarAmount: Float = sharedPref.getFloat(PREF_BALANCE, 0.0f)
+                        val dollarAmount: Float = sharedPref.getFloat(internalMem.PREF_BALANCE, 0.0f)
                         usdView.text = "$" + String.format("%.2f", dollarAmount * price)
 
-                        sharedPref = getSharedPreferences(PREF_EXCHANGE, PRIVATE_MODE)
                         val editor = sharedPref.edit()
-                        editor.putFloat(PREF_EXCHANGE, price)
-                        editor.apply()
+                        editor.putFloat(internalMem.PREF_EXCHANGE, price)
+                        editor.commit()
                     }
                     else {
                         Log.d("CODE1", response.body()!!.message)
