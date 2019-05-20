@@ -70,7 +70,7 @@
 						android:layout_height="match_parent" android:id="@+id/toUser" android:layout_weight="0.1"
 						android:textSize="16sp" style="@style/CommonUse" android:gravity="start|center_vertical"
 						android:paddingLeft="4dp" android:paddingRight="4dp"
-						android:inputType="text" android:autofillHints="address"/>
+						android:inputType="text" android:autofillHints="address" tools:ignore="LabelFor"/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="horizontal"
@@ -92,7 +92,7 @@
 						android:id="@+id/amountInput" android:layout_weight="0.7" android:text="0.00"
 						style="@style/SilentHill" android:textSize="16sp"
 						android:gravity="start|center_vertical" android:paddingLeft="4dp" android:paddingRight="4dp"
-						android:textColor="#ffffff"/>
+						android:textColor="#ffffff" android:autofillHints="amount" tools:ignore="LabelFor"/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="horizontal"
@@ -104,31 +104,31 @@
 						android:layout_width="wrap_content"
 						android:layout_height="30dp" android:id="@+id/b0001" android:layout_weight="0.2"
 						android:textColor="@color/colorAccent" android:background="@color/authComments"
-						android:layout_margin="4dp" android:textSize="10sp"/>
+						android:layout_margin="4dp" android:textSize="10sp" tools:ignore="ButtonStyle"/>
 				<Button
 						android:text="0.0010"
 						android:layout_width="wrap_content"
 						android:layout_height="30dp" android:id="@+id/b0010" android:layout_weight="0.2"
 						android:textColor="@color/colorAccent" android:background="@color/authComments"
-						android:layout_margin="4dp" android:textSize="10sp"/>
+						android:layout_margin="4dp" android:textSize="10sp" tools:ignore="ButtonStyle"/>
 				<Button
 						android:text="0.0100"
 						android:layout_width="wrap_content"
 						android:layout_height="30dp" android:id="@+id/b0100" android:layout_weight="0.2"
 						android:textColor="@color/colorAccent" android:background="@color/authComments"
-						android:layout_margin="4dp" android:textSize="10sp"/>
+						android:layout_margin="4dp" android:textSize="10sp" tools:ignore="ButtonStyle"/>
 				<Button
 						android:text="0.1000"
 						android:layout_width="wrap_content"
 						android:layout_height="30dp" android:id="@+id/b1000" android:layout_weight="0.2"
 						android:textColor="@color/colorAccent" android:background="@color/authComments"
-						android:layout_margin="4dp" android:textSize="10sp"/>
+						android:layout_margin="4dp" android:textSize="10sp" tools:ignore="ButtonStyle"/>
 				<Button
 						android:text="max"
 						android:layout_width="wrap_content"
 						android:layout_height="30dp" android:id="@+id/bmax" android:layout_weight="0.2"
 						android:textColor="@color/colorAccent" android:background="@color/authComments"
-						android:layout_margin="4dp" android:textSize="10sp"/>
+						android:layout_margin="4dp" android:textSize="10sp" tools:ignore="ButtonStyle"/>
 			</LinearLayout>
 			<LinearLayout
 					android:orientation="horizontal"
@@ -169,7 +169,7 @@
 						android:id="@+id/memoInput" android:layout_weight="0.7"
 						style="@style/SilentHill" android:textSize="16sp"
 						android:gravity="start|center_vertical" android:paddingLeft="4dp" android:paddingRight="4dp"
-						android:textColor="#ffffff"/>
+						android:textColor="#ffffff" android:autofillHints="comment" tools:ignore="LabelFor"/>
 			</LinearLayout>
 			<Button
 					android:text="@string/send"

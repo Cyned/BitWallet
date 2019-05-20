@@ -46,7 +46,6 @@
 						android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="0.497"
 						app:layout_constraintVertical_bias="1.0"/>
 				<TextView
-						android:text="5.153"
 						android:layout_width="wrap_content"
 						android:layout_height="75dp"
 						android:id="@+id/amount" style="@style/CommonUse"
@@ -67,7 +66,6 @@
 						app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="1.0"
 						app:layout_constraintVertical_bias="0.394" android:textSize="16sp"/>
 				<TextView
-						android:text="634"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:id="@+id/decimal" android:layout_marginTop="8dp"
@@ -79,7 +77,6 @@
 						app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.606"
 						android:textSize="16sp"/>
 				<TextView
-						android:text="$19,055.79"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:id="@+id/usd" android:layout_marginTop="8dp"
@@ -100,7 +97,6 @@
 					android:background="@color/mainBackground">
 
 				<TextView
-						android:text="1 BTC = $3,964.23"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="8dp"
@@ -147,7 +143,6 @@
 								app:layout_constraintEnd_toEndOf="parent"/>
 					</android.support.constraint.ConstraintLayout>
 					<TextView
-							android:text="2.45%"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:id="@+id/delta"

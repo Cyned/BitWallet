@@ -65,7 +65,6 @@
 					android:layout_gravity="center" android:paddingBottom="12dp" android:paddingLeft="20dp"
 					android:paddingTop="12dp" android:paddingRight="20dp">
 				<TextView
-						android:text="mtkdk245k4...234jn2n353d"
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent" android:id="@+id/userCode"
 						app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"

@@ -36,50 +36,32 @@
 				android:layout_marginLeft="20dp" android:layout_marginRight="20dp"/>
 	</LinearLayout>
 	<LinearLayout
-			android:orientation="vertical"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-			android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-			android:layout_marginRight="10dp" android:layout_marginBottom="8dp"
-			app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
-			android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/navbar"
-			app:layout_constraintVertical_bias="0.069" android:id="@+id/menu">
-		<LinearLayout
-				android:orientation="vertical"
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="37dp" android:layout_margin="10dp" tools:layout_editor_absoluteY="96dp"
+			tools:layout_editor_absoluteX="10dp" android:id="@+id/menu" android:paddingLeft="10dp"
+			android:paddingRight="10dp" android:paddingTop="4dp" android:paddingBottom="4dp"
+			android:background="@drawable/round_input">
+		<TextView
+				android:text="User:"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" android:layout_margin="8dp">
-			<LinearLayout
-					android:orientation="horizontal"
-					android:layout_width="match_parent"
-					android:layout_height="37dp" android:layout_margin="2dp">
-				<TextView
-						android:text="@string/businessWallet"
-						android:layout_width="match_parent"
-						android:layout_height="match_parent" android:layout_weight="0.9" style="@style/CommonUse"
-						android:textSize="16sp" android:gravity="center_vertical" android:paddingLeft="8dp"
-						android:paddingRight="8dp"/>
-				<Button
-						android:text="X"
-						android:layout_width="74dp"
-						android:layout_height="match_parent" android:id="@+id/delete" android:layout_weight="0.1"
-						android:background="@color/mainBackground" android:textColor="@android:color/white"/>
-			</LinearLayout>
-			<TextView
-					android:text="@string/description"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:id="@+id/textView11" android:layout_weight="1"
-					android:textSize="14sp" style="@style/SilentHill" android:layout_margin="2dp"
-					android:paddingLeft="8dp" android:paddingRight="8dp"/>
-		</LinearLayout>
+				android:layout_height="match_parent" android:layout_weight="0.8" style="@style/CommonUse"
+				android:textSize="16sp" android:gravity="center_vertical|end" android:paddingLeft="8dp"
+				android:paddingRight="8dp" android:id="@+id/textView"/>
+		<TextView
+				android:text="cynedenis@gmail.com"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:layout_weight="0.2" style="@style/CommonUse"
+				android:textSize="16sp" android:gravity="center_vertical" android:paddingLeft="8dp"
+				android:paddingRight="8dp" android:id="@+id/username"/>
 	</LinearLayout>
 	<TextView
 			android:text="@string/signOut"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:id="@+id/signOut" android:layout_marginTop="20dp"
-			app:layout_constraintTop_toBottomOf="@+id/menu"
+			android:id="@+id/signOut"
 			app:layout_constraintEnd_toEndOf="parent"
 			android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-			android:textColor="@color/authHint" android:padding="8dp"/>
+			android:textColor="@color/authHint" android:padding="8dp" android:layout_marginTop="8dp"
+			app:layout_constraintTop_toBottomOf="@+id/menu"/>
 </android.support.constraint.ConstraintLayout>
