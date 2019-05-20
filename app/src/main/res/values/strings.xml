@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">BitWallet application</string>
+	<string name="app_name">BitWallet</string>
 	<string name="author">Denis</string>
 
 	<string name="WalletBtn">Wallet</string>

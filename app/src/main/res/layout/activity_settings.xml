@@ -38,10 +38,12 @@
 	<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
-			android:layout_height="37dp" android:layout_margin="10dp" tools:layout_editor_absoluteY="96dp"
+			android:layout_height="wrap_content"
 			tools:layout_editor_absoluteX="10dp" android:id="@+id/menu" android:paddingLeft="10dp"
-			android:paddingRight="10dp" android:paddingTop="4dp" android:paddingBottom="4dp"
-			android:background="@drawable/round_input">
+			android:paddingRight="10dp" android:paddingTop="10dp" android:paddingBottom="10dp"
+			android:background="@drawable/round_input" android:layout_marginTop="100dp"
+			app:layout_constraintTop_toBottomOf="@+id/navbar"
+	>
 		<TextView
 				android:text="User:"
 				android:layout_width="match_parent"
