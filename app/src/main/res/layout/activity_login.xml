@@ -65,7 +65,7 @@
 						android:layout_width="20dp" android:inputType="textWebEmailAddress|textEmailAddress"
 						android:visibility="visible" android:paddingLeft="4dp" android:paddingRight="4dp"
 						android:importantForAutofill="no" tools:targetApi="o" tools:ignore="LabelFor"
-						android:text="denis"/>
+				/>
 				<ImageView
 						android:src="@android:drawable/ic_notification_clear_all"
 						android:layout_width="0dp"
@@ -101,7 +101,7 @@
 						android:layout_width="20dp"
 						android:password="true" android:paddingLeft="4dp" android:paddingRight="4dp"
 						android:importantForAutofill="no" tools:targetApi="o" tools:ignore="LabelFor"
-						android:text="1234"/>
+				/>
 				<ImageView
 						android:layout_width="0dp"
 						android:src="@mipmap/next"
