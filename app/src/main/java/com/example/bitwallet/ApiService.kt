@@ -13,6 +13,7 @@ import retrofit2.http.*
 
 
 var URL: String = "http://176.37.12.50:8364/"
+//var URL: String = "http://176.37.12.50:8365/"
 
 
 interface ApiService {
@@ -38,6 +39,7 @@ interface ApiService {
 
 
     @GET("/rates/btcusd")
+//    @GET("/rates/ethUsd")
     fun getExchange(
         @Header("x-access-token") token: String
     ) : Call<ExchangeModel>

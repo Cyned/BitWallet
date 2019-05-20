@@ -120,8 +120,7 @@ class Login : Activity(){
         val password = passwordTxt.text.toString()
 
         if (!email.isEmpty() && !password.isEmpty()) {
-//            firebaseLogin(email = email, password = password)
-            bitwalletLogin(username=email, password = password)
+            firebaseLogin(email = email, password = password)
         }else {
             Toast.makeText(this, "Please fill up the Credentials :(", Toast.LENGTH_LONG).show()
         }
