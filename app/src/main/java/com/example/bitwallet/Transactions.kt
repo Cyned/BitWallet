@@ -22,8 +22,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.*
-import kotlinx.android.synthetic.main.activity_receive.view.*
-import okhttp3.internal.Util
+import kotlinx.android.synthetic.main.activity_transactions.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -73,7 +72,7 @@ class Transactions : Activity() {
                         val transactions: List<Map<String, out String>> = response.body()!!.txs
                         Log.d("Status", "Get transactions")
                         var trans_id: Int = 1
-                        for(trans in transactions) {
+                        for(trans in transactions.reversed()) {
                             generateView(trans, id=trans_id, listView=listView)
                             trans_id++
                         }
@@ -114,7 +113,7 @@ class Transactions : Activity() {
         params.setMargins(0, 2, 0, 2)
         trans.layoutParams = params
         trans.setBackgroundColor(resources.getColor(R.color.mainBackground))
-        trans.setPadding(4, 8, 8, 4)
+        trans.setPadding(8, 4, 8, 4)
 //        trans.id = "@+id/trans"
 
         status.orientation = LinearLayout.VERTICAL
@@ -134,7 +133,7 @@ class Transactions : Activity() {
         )
         time.layoutParams = params
         time.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
-        time.setBackgroundColor(resources.getColor(R.color.colorAccent))
+        time.setTextColor(resources.getColor(R.color.colorAccent))
 //        time.setTextAppearance(R.style.CommonUse)
 //        time.id="@+id/time"
 
@@ -146,7 +145,7 @@ class Transactions : Activity() {
         )
         statusMsg.layoutParams = params
         statusMsg.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
-        time.setBackgroundColor(resources.getColor(R.color.authComments))
+        statusMsg.setTextColor(resources.getColor(R.color.authComments))
 //        statusMsg.setTextAppearance(R.style.SilentHill)
 //        statusMsg.id="@+id/statusMsg"
 
@@ -163,35 +162,31 @@ class Transactions : Activity() {
         amountL.orientation = LinearLayout.HORIZONTAL
         params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view width
-            ViewGroup.LayoutParams.WRAP_CONTENT, // This will define text view height
+            ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view height
             0.5f
         )
         amountL.layoutParams = params
 //        amount.id="@+id/amountL"
 
-        amountBtc.text = transaction["amount"] + " BTC"
+        amountBtc.text = String.format("%.4f", transaction["amount"]!!.toFloat()) + " BTC"
         params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view width
             ViewGroup.LayoutParams.WRAP_CONTENT, // This will define text view height
             0.2f
         )
+        params.setMargins(4,0,4,0)
         amountBtc.layoutParams = params
         amountBtc.gravity = Gravity.END
         amountBtc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
 //        amountBtc.id="@+id/amountBtc"
 
-//        params = LinearLayout.LayoutParams(
-//            (100 * Resources.getSystem().getDisplayMetrics().density).toInt(), // This will define text view width
-//            (21 * Resources.getSystem().getDisplayMetrics().density).toInt(), // This will define text view height
-//            0.8f
-//        )
         params = LinearLayout.LayoutParams(
-            (1000 * Resources.getSystem().getDisplayMetrics().density).toInt(), // This will define text view width
-            (1000 * Resources.getSystem().getDisplayMetrics().density).toInt(), // This will define text view height
+            (100 * Resources.getSystem().getDisplayMetrics().density).toInt(), // This will define text view width
+            (21 * Resources.getSystem().getDisplayMetrics().density).toInt(), // This will define text view height
             0.8f
         )
         amountImage.layoutParams = params
-        amountImage.setPadding(2,2,2,2)
+        amountImage.setPadding(4,2,4,2)
         amount.gravity = Gravity.END
 //        android:id="@+id/picture"
 
@@ -206,7 +201,7 @@ class Transactions : Activity() {
 
         sharedPref = getSharedPreferences(PREF_EXCHANGE, PRIVATE_MODE)
         val price: Float = sharedPref.getFloat(PREF_EXCHANGE, 0.0f)
-        amountDollar.text = (transaction["amount"].toString().toFloat() * price).toString() + "$"
+        amountDollar.text = String.format("%.2f", transaction["amount"].toString().toFloat() * price) + "$"
         params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view width
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view height
@@ -215,15 +210,15 @@ class Transactions : Activity() {
         amountBtc.layoutParams = params
         amountDollar.gravity = Gravity.END
         amountDollar.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14F)
-        amountDollar.setBackgroundColor(resources.getColor(R.color.authComments))
-//        amountDollar.setTextAppearance(R.style.SilentHill)
+        amountDollar.setTextColor(resources.getColor(R.color.authComments))
 //        amountDollar.id="@+id/amountDollar"
 
         status.addView(time)
         status.addView(statusMsg)
         amount.addView(amountL)
+        amount.addView(amountDollar)
         amountL.addView(amountBtc)
-        amountL.addView(amountDollar)
+        amountL.addView(amountImage)
         trans.addView(status)
         trans.addView(amount)
         listView.addView(trans)
@@ -235,7 +230,7 @@ class Transactions : Activity() {
 
     private fun getDateTime(s: String): String? {
         try {
-            val sdf = SimpleDateFormat("h/m MM/dd/yyyy")
+            val sdf = SimpleDateFormat("MM/dd/yyyy H:m")
             val netDate = Date(s.toLong() * 1000)
             return sdf.format(netDate)
         } catch (e: Exception) {

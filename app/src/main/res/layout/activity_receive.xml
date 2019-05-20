@@ -15,9 +15,9 @@
 			android:id="@+id/navbar"
 			android:paddingLeft="10dp" android:paddingBottom="10dp" android:paddingTop="10dp"
 			android:paddingRight="10dp" android:background="@color/authInput">
-		<ImageView
+		<android.support.v7.widget.AppCompatImageView
 				android:layout_width="20dp"
-				android:layout_height="20dp" android:src="?attr/actionModeCloseDrawable"
+				android:layout_height="20dp" app:srcCompat="?attr/actionModeCloseDrawable"
 				android:tint="@android:color/white"
 				android:id="@+id/home" android:layout_weight="0.05"
 				android:layout_margin="0dp" android:layout_marginStart="8dp"
