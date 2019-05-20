@@ -7,6 +7,6 @@
 	<string name="receiveBitcoin">Receive bitcoins</string>
 	<string name="sendBitcoin">Send bitcoins</string>
 	<string name="transactionsList">Transactions list</string>
-	<string name="info">Wallet setting</string>
+	<string name="info">Wallet settings</string>
 
 </resources>
