@@ -97,7 +97,7 @@ class Wallet : Activity() {
                             amountView.text = balance.toString().slice(IntRange(start = 0, endInclusive = 4))
                             decimalView.text = "0"
                         }else{
-                            amountView.text = "0"
+                            amountView.text = balanceStr
                             decimalView.text = "0"
                         }
 

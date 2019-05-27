@@ -75,7 +75,7 @@ class Receive : Activity() {
                         addressText.text = userAddress.slice(IntRange(start=0, endInclusive=10)) +
                                 "..." +
                                 userAddress.slice(IntRange(start=userAddress.length-11, endInclusive=userAddress.length-1))
-                        addressImage.setImageBitmap(generateQR("bitcoin:$address"))
+                        addressImage.setImageBitmap(generateQR("$address"))
                     }
                     else {
                         Log.d("CODE1", response.body()!!.message)
