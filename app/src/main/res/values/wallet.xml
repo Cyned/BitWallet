@@ -2,10 +2,10 @@
 <resources>
 	<!-- Wallet Strings -->
 	<string name="businessWallet">Business wallet</string>
-	<string name="bitcoin">BTC</string>
+	<string name="bitcoin">ETH</string>
 
-	<string name="receiveBitcoin">Receive bitcoins</string>
-	<string name="sendBitcoin">Send bitcoins</string>
+	<string name="receiveBitcoin">Receive ether</string>
+	<string name="sendBitcoin">Send ether</string>
 	<string name="transactionsList">Transactions list</string>
 	<string name="info">Wallet settings</string>
 

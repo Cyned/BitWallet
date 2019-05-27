@@ -88,9 +88,18 @@ class Wallet : Activity() {
                         val editor = sharedPref.edit()
                         editor.putFloat(internalMem.PREF_BALANCE, balance)
                         editor.commit()
-
-                        amountView.text = balance.toString().slice(IntRange(start=0, endInclusive = 4))
-                        decimalView.text = balance.toString().slice(IntRange(start=4, endInclusive = 6))
+                        Log.d("INTERNAL", balance.toString())
+                        var balanceStr: String = balance.toString()
+                        if(balanceStr.length >= 6) {
+                            amountView.text = balance.toString().slice(IntRange(start = 0, endInclusive = 4))
+                            decimalView.text = balance.toString().slice(IntRange(start = 4, endInclusive = 6))
+                        }else if(balanceStr.length >= 4){
+                            amountView.text = balance.toString().slice(IntRange(start = 0, endInclusive = 4))
+                            decimalView.text = "0"
+                        }else{
+                            amountView.text = "0"
+                            decimalView.text = "0"
+                        }
 
                     }
                     else {
@@ -136,7 +145,7 @@ class Wallet : Activity() {
                             deltaDown.visibility = View.VISIBLE
                             change24h = -change24h
                         }
-                        marketPriceView.text = "1 BTC = $$price"
+                        marketPriceView.text = "1 ETH = $$price"
                         deltaView.text =  String.format("%.2f", change24h * 100) + "%"
 
                         val dollarAmount: Float = sharedPref.getFloat(internalMem.PREF_BALANCE, 0.0f)

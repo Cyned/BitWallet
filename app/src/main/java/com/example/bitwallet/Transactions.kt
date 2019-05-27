@@ -161,7 +161,7 @@ class Transactions : Activity() {
         amountL.layoutParams = params
 //        amount.id="@+id/amountL"
 
-        amountBtc.text = String.format("%.4f", transaction["amount"]!!.toFloat()) + " BTC"
+        amountBtc.text = String.format("%.4f", transaction["amount"]!!.toFloat()) + " ETH"
         params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, // This will define text view width
             ViewGroup.LayoutParams.WRAP_CONTENT, // This will define text view height
